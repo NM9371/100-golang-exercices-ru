@@ -1,6 +1,6 @@
-# File Management (16-19)
+# Работа с файлами (16-19)
 
-* [Check if a file exists](016/README.md)
-* [Read a file](017/README.md)
-* [Write to a file](018/README.md)
-* [Rename a file](019/README.md)
+* [Проверить существование файла](016/README.md)
+* [Чтение файла](017/README.md)
+* [Запись в файл](018/README.md)
+* [Переименование файла](019/README.md)

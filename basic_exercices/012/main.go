@@ -1,14 +1,14 @@
-// Exercise: RANGE
-// Range is used to iterate over data structures
-// use range to print the values and index of the array
+// Упражнение: RANGE
+// Range используется для итерации по структурам данных
+// используйте range для вывода значений и индексов массива
 
 package main
 
 import "fmt"
 
-func main () {
-	// initialized array of 10 int values [1..10]
-	var arr = [10]int{1,2,3,4,5,6,7,8,9,10}
-	// Here goes your code
-	
+func main() {
+	// инициализированный массив из 10 значений int [1..10]
+	var arr = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	// Здесь пишите ваш код
+
 }

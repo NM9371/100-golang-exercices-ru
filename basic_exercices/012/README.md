@@ -1,16 +1,16 @@
-# Exercise: Range
+# Упражнение: Range
 
-Ranges are an idiomatic way for iterating over data structures, it is widely used to iterate over arrays, maps or slices.
+Range — это идиоматический способ итерации по структурам данных; он широко используется для перебора массивов, отображений (map) или срезов (slice).
 
-The syntax for range is:
+Синтаксис range:
 
 ```go
-for index, value := range <data_structure> {
-  // index and value are populated automatically for each element of the data structure.
+for index, value := range <структура_данных> {
+  // index и value заполняются автоматически для каждого элемента структуры данных.
 }
 ```
 
-- Use range to print the values and index of the array
+- Используйте range для вывода значений и индексов массива
 
 ```go
 package main
@@ -18,15 +18,15 @@ package main
 import "fmt"
 
 func main () {
-  // initialized array of 10 int values [1..10]
+  // инициализированный массив из 10 значений int [1..10]
   var arr = [10]int{1,2,3,4,5,6,7,8,9,10}
-  // Here goes your code
+  // Здесь пишите ваш код
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main

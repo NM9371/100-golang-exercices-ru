@@ -1,16 +1,16 @@
-// Exercise: Check if a file exists
-// Tip: use the "os" package
+// Упражнение: Проверьте существование файла
+// Подсказка: используйте пакет "os"
 
 package main
 
 import "fmt"
 import "os"
 
-func main () {
-	// Here goes your code
+func main() {
+	// Ваш код здесь
 	if _, err := os.Stat("file-exists.go"); err == nil {
-		fmt.Printf("File exists\n");  
-	  } else {
-		fmt.Printf("File does not exist\n");  
-	  }
+		fmt.Printf("File exists\n")
+	} else {
+		fmt.Printf("File does not exist\n")
+	}
 }

@@ -1,17 +1,16 @@
-// Exercise: Rename a file from name1 to name2
-// Tip: use the "os" package
+// Упражнение: Переименуйте файл с name1 на name2
+// Подсказка: используйте пакет "os"
 
 package main
 
 import "os"
 
-
-func main () {
+func main() {
 	var src, dest string
-	// Here goes your code
-	
-  src = "name1.txt"
-  dest = "name2.txt"
+	// Ваш код здесь
 
-  os.Rename(src, dest)
+	src = "name1.txt"
+	dest = "name2.txt"
+
+	os.Rename(src, dest)
 }

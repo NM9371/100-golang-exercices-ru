@@ -1,33 +1,32 @@
-// Exercise: Channels (buffered)
+// Упражнение: Каналы (буферизованные)
 
-// Channels that accept a single message (<-) are synchronous. But go also can use async channels, or buffered channels
-// Create a buffered string channel with a capacity of 4
-// Send directly 4 different strings to that channel.
-// Use the pop_message function 4 times to unbuffer the channel and see how it works
+// Каналы, принимающие одно сообщение (<-), синхронны. Но Go также может использовать асинхронные или буферизованные каналы
+// Создайте буферизованный строковый канал с ёмкостью 4
+// Отправьте в него напрямую 4 разные строки.
+// Используйте функцию pop_message 4 раза, чтобы извлечь элементы из канала и посмотреть, как это работает
 
 package main
 
 import "fmt"
 import "time"
 
-
-func pop_message (c chan string){
-  msg := <- c
-  fmt.Println(msg)
+func pop_message(c chan string) {
+	msg := <-c
+	fmt.Println(msg)
 }
-func main () {
-  // Your code goes here
-  var c chan string = make(chan string, 4)
-  c <- "My"
-  c <- "Name"
-  c <- "is"
-  c <- "Enin"
+func main() {
+	// Ваш код здесь
+	var c chan string = make(chan string, 4)
+	c <- "My"
+	c <- "Name"
+	c <- "is"
+	c <- "Enin"
 
-  pop_message(c)
-  pop_message(c)
-  pop_message(c)
-  pop_message(c)
+	pop_message(c)
+	pop_message(c)
+	pop_message(c)
+	pop_message(c)
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
-  time.Sleep(1 * time.Second)
+	// эта пауза нужна, чтобы не завершить программу раньше времени :)
+	time.Sleep(1 * time.Second)
 }

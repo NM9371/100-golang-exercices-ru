@@ -1,98 +1,98 @@
-# 100 exercices to improve with GOLANG
+# 100 упражнений для улучшения навыков в GOLANG
 
-## Intro
+## Введение
 
-I hadn't find any good repository with 100 exercices for the GO Programming language, and as It's a beautiful language, I will create it myself :smile: feel free to contribute and use it!
+Я не нашёл ни одного хорошего репозитория со 100 упражнениями по языку программирования Go, а поскольку это прекрасный язык, я решил создать его сам :smile: Не стесняйтесь вносить вклад и использовать!
 
-The following exercises assume a fairly basic level of object oriented programming, but it is also OK if you don't have it.
+Следующие упражнения предполагают базовый уровень объектно-ориентированного программирования, но это также не обязательно.
 
-## Overview
+## Обзор
 
-My main idea is that the exercices are structured like this:
+Основная идея заключается в том, что упражнения структурированы следующим образом:
 
-- From 1 to 15   : Basic exercices
-- From 16 to 19  : File management
-- From 20 to 31  : Intermediate exercices
-- From 32 to 44  : Concurrency
-- From 45 to 48  : Time
-- From 49 to 53  : JSON
-- From 54 to 61  : Context
-- From 62 to 68  : Interfaces
-- From 69 to 82  : HTTP & APIs
-- From 83 to 89  : Testing & misc
-- From 90 to 100 : Database (non-relational(mongo)) + CRUD API with Fiber
+- С 1 по 15   : Базовые упражнения
+- С 16 по 19  : Работа с файлами
+- С 20 по 31  : Упражнения среднего уровня
+- С 32 по 44  : Конкурентность
+- С 45 по 48  : Время
+- С 49 по 53  : JSON
+- С 54 по 61  : Контекст
+- С 62 по 68  : Интерфейсы
+- С 69 по 82  : HTTP и API
+- С 83 по 89  : Тестирование и прочее
+- С 90 по 100 : База данных (нереляционная (mongo)) + CRUD API с Fiber
 
-Each folder will contain one exercise and one solution. There are multiple ways to acheive the same reault, so everything counts.
+Каждая папка будет содержать одно упражнение и одно решение. Существует множество способов достичь одного и того же результата, поэтому всё считается.
 
 ```bash
-├── n-th_exercise       # <- exercise number
-│    ├── README.md      # <- exercise description and info + tips (for the book!)
+├── n-е_упражнение      # <- номер упражнения
+│    ├── README.md      # <- описание упражнения и информация + подсказки (для книги!)
 │    ├── main.go
 │    ├── [.env]
-│    └── solution       # <- solution folder
+│    └── solution       # <- папка с решением
 │       └── solution.go
 ├── go.mod
 └── go.sum
 ```
 
-## Prerequisites
+## Предварительные требования
 
 ### Git
 
-Git is a distributed version control system that tracks versions of files.
-It is often used to control source code by programmers who are developing software collaboratively, as an example more than 1000 persons could work in a single project simultaneously without interrupting themselves.
+Git — это распределённая система контроля версий, которая отслеживает версии файлов.
+Она часто используется для управления исходным кодом программистами, которые разрабатывают программное обеспечение совместно: например, более 1000 человек могут работать над одним проектом одновременно, не мешая друг другу.
 
-If you have never heard about git and you are interested in coding, it is a tool of vital importance for you to know.
+Если вы никогда не слышали о git и интересуетесь программированием, это инструмент первостепенной важности, который вам необходимо знать.
 
-This book text is stored in a git repository, and ideally you should be able to fork the repository so you can execute your code locally and play around.
+Текст этой книги хранится в git-репозитории, и в идеале вы должны иметь возможность сделать форк репозитория, чтобы запускать код локально и экспериментировать с ним.
 
-[Download git](https://git-scm.com/downloads)
+[Скачать git](https://git-scm.com/downloads)
 
-### Github / VCS
+### Github / Система контроля версий
 
-Github is an online platform to store your code. You can also store your code locally (without need of git) or in any other platform (Gitlab, bitbucket, azure, AWS codecommit, etc.)
+Github — это онлайн-платформа для хранения кода. Вы также можете хранить код локально (без необходимости использования git) или на любой другой платформе (Gitlab, Bitbucket, Azure, AWS CodeCommit и т.д.)
 
-While writing code, a version control system is highly advised, so you can have states stored where your code is working as expected, like checkpoints.
+При написании кода настоятельно рекомендуется использовать систему контроля версий, чтобы сохранять состояния, при которых ваш код работает как ожидается, наподобие контрольных точек.
 
-I personally love github, for it's wide community, the easy user experience and some of the most famous open source repositories are stored in there, like [linux](https://github.com/torvalds/linux), [bitcoin](https://github.com/bitcoin/bitcoin), [kubernetes](https://github.com/kubernetes/kubernetes) and even the [go](https://github.com/golang/go) programming language itself as a mirror.
+Лично мне нравится GitHub за его широкое сообщество, удобный пользовательский опыт, а также за то, что некоторые из самых известных репозиториев с открытым исходным кодом хранятся там, например [linux](https://github.com/torvalds/linux), [bitcoin](https://github.com/bitcoin/bitcoin), [kubernetes](https://github.com/kubernetes/kubernetes) и даже сам язык [go](https://github.com/golang/go) в виде зеркала.
 
-### An IDE of your choice
+### IDE на ваш выбор
 
-An [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) is where you are going to write your code.
-IDEs provide a great variety of features and plugins to help you code smoother, faster, with less errors and more efficiently.
+[IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) — это среда, в которой вы будете писать код.
+IDE предоставляют широкий спектр функций и плагинов, которые помогают писать код быстрее, удобнее, с меньшим количеством ошибок и более эффективно.
 
-Visual Studio Code is a great free IDE if you are new to programming. But feel free to use whatever you are comfortable with. (You can also write code in the simplest notepad or text editors)
+Visual Studio Code — отличная бесплатная IDE для тех, кто только начинает программировать. Но не стесняйтесь использовать то, с чем вам комфортно. (Можно также писать код в обычном блокноте или текстовом редакторе)
 
-[Download Visual Studio Code](https://code.visualstudio.com/)
+[Скачать Visual Studio Code](https://code.visualstudio.com/)
 
 ### Golang
 
-Golang is a programming language that was designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson, and publicly announced in November of 2009.
+Golang — это язык программирования, разработанный в Google в 2007 году Робертом Гризмером, Робом Пайком и Кеном Томпсоном, и публично представленный в ноябре 2009 года.
 
-If there’s one thing most people know about Go, is that it is designed for concurrency. No introduction to Go is complete without a demonstration of its goroutines and channels.
+Если есть одна вещь, которую большинство людей знает о Go, — это то, что он создан для конкурентности. Ни одно введение в Go не будет полным без демонстрации горутин и каналов.
 
-But when people hear the word concurrency they often think of parallelism, a related but quite distinct concept. In programming, concurrency is the composition of independently executing processes, while parallelism is the simultaneous execution of (possibly related) computations. Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once.
+Но когда люди слышат слово «конкурентность», они часто думают о параллелизме — связанном, но совершенно другом понятии. В программировании конкурентность — это композиция независимо выполняющихся процессов, тогда как параллелизм — это одновременное выполнение (возможно, связанных) вычислений. Конкурентность — это о том, чтобы справляться со множеством вещей одновременно. Параллелизм — это о том, чтобы делать множество вещей одновременно.
 
-#### Parallelism vs. concurrency
+#### Параллелизм vs. конкурентность
 
-To put a simple example of concurrency: imagine you have the task to eat a whole cake and sing a whole song.
-The rule is that you sing and eat simultaneously. You can eat the whole cake, then sing the whole song, or you can eat half a cake, then sing half a song, then do that again, etc.
+Для простого примера конкурентности: представьте, что перед вами стоит задача съесть целый торт и спеть целую песню.
+Правило: петь и есть нужно одновременно. Вы можете съесть весь торт, затем спеть всю песню, или съесть половину торта, затем спеть половину песни, затем повторить это снова и т.д.
 
-Following the example, parallelism would be that a friend that knows how to sing joins you in this task, each of you gets a process (e.g: your friend is singing, and you are eating a cake) and you do that at the same time, in parallel.
+Продолжая пример: параллелизм — это когда друг, умеющий петь, присоединяется к вам в этом задании, каждый из вас получает свой процесс (например: ваш друг поёт, а вы едите торт) и делаете это одновременно, параллельно.
 
-Parallelism requires hardware with multiple processing units, essentially. In single-core CPU, you may get concurrency but NOT parallelism. Parallelism is a specific kind of concurrency where tasks are really executed simultaneously.
+Параллелизм по существу требует аппаратного обеспечения с несколькими вычислительными блоками. На одноядерном процессоре вы можете получить конкурентность, но НЕ параллелизм. Параллелизм — это особый вид конкурентности, при котором задачи действительно выполняются одновременно.
 
-### How do I install golang?
+### Как установить golang?
 
-You can install golang [in it's official website](https://go.dev/doc/install)
+Вы можете установить golang [на официальном сайте](https://go.dev/doc/install)
 
-## How do I start if I want to do the execises?
+## Как начать, если я хочу выполнять упражнения?
 
-After all the prerequisites above, fork the [100-golang-exercises](https://github.com/blueprismo/100-golang-exercices/fork) git repository or clone it if you don't have a github account and you'll be ready to go.
+После выполнения всех вышеперечисленных предварительных условий сделайте форк репозитория [100-golang-exercises](https://github.com/blueprismo/100-golang-exercices/fork) или клонируйте его, если у вас нет аккаунта на GitHub, и вы готовы приступить.
 
-## Note
+## Примечание
 
-Please notice there are some exercises that are intended to have an execution failure, the important thing here is learning.
-Feel free to contribute, comment, share your solutions and of course have lot of fun!
+Обратите внимание, что некоторые упражнения предназначены для завершения с ошибкой выполнения — главное здесь обучение.
+Не стесняйтесь вносить вклад, комментировать, делиться своими решениями и, конечно же, получать удовольствие!
 
-Thanks a lot
+Большое спасибо

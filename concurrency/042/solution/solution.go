@@ -1,17 +1,16 @@
-// Exercise: Channels - Range
+// Упражнение: Каналы — range
 
-// In this exercise we will use the range keyword to iterate over a buffered (async) channel.
-// Create a buffered channel (type int) of a dimension of 5
+// В этом упражнении мы будем использовать ключевое слово range для итерации по буферизованному (асинхронному) каналу.
+// Создайте буферизованный канал (тип int) размерностью 5
 
-// TIP: but buffered channels need to be closed before iterating over them!!! 
+// ПОДСКАЗКА: буферизованные каналы нужно закрыть перед итерацией по ним!!!
 
 package main
 
 import "fmt"
 
-
-func main () {
-	var c chan int = make(chan int,5)
+func main() {
+	var c chan int = make(chan int, 5)
 
 	c <- 3
 	c <- 6
@@ -19,7 +18,7 @@ func main () {
 	c <- 22
 	c <- 1
 	close(c)
-	
+
 	for element := range c {
 		fmt.Println(element)
 	}

@@ -1,13 +1,13 @@
-// Exercise: User input
-// Get a number from the console and check if it's odd
+// Упражнение: Пользовательский ввод
+// Получите число из консоли и проверьте, является ли оно нечётным
 
-// You can create another function or do it everything in the main func :) 
+// Можно создать отдельную функцию или разместить всё в функции main :)
 
 package main
 
 import "fmt"
 
-func main () {
+func main() {
 	var number int32
 	fmt.Println("Enter a number: ")
 	fmt.Scanln(&number)
@@ -15,19 +15,19 @@ func main () {
 	iseven(number)
 
 	/*
-	Possible solution without an additional function
-	if (number % 2 == 0) { 
-		fmt.Println("It's even")
-	} else { 
-		fmt.Println("It's odd")
-	}*/
+		Возможное решение без дополнительной функции:
+		if (number % 2 == 0) {
+			fmt.Println("It's even")
+		} else {
+			fmt.Println("It's odd")
+		}*/
 }
 
 func iseven(number int32) bool {
-	if (number % 2 == 0) {
+	if number%2 == 0 {
 		fmt.Println("is even")
 		return true
-	}  else { 
+	} else {
 		fmt.Println("is odd")
 		return false
 	}

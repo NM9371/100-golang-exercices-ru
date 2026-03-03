@@ -1,11 +1,11 @@
-# Exercise: while loop
+# Упражнение: Цикл while
 
-While in other programs there is a "while" loop, for instance python, in go there is no such a keyword!
-The idiomatic equivalent in golang is a simplified for loop where you put the condition.
+В других языках программирования, например в Python, существует цикл "while", однако в Go такого ключевого слова нет!
+Идиоматическим эквивалентом в golang является упрощённый цикл for, в который помещается только условие.
 
-Bear in mind, that this can create infinite loops if the logic inside the loop is not properly handled. That is, the condition that is being checked must change towards exiting the loop.
+Имейте в виду, что это может породить бесконечный цикл, если логика внутри цикла настроена неправильно. То есть проверяемое условие должно изменяться в направлении выхода из цикла.
 
-A simple example of this loop that prints the numbers from 0 to 100
+Простой пример такого цикла, печатающего числа от 0 до 100:
 
 ```go
 init := 0
@@ -16,7 +16,7 @@ for (init <= end) {
   }
 ```
 
-Exercise: With a simple "for" loop, print the numbers from 30 to 50
+Упражнение: С помощью простого цикла "for" выведите числа от 30 до 50
 
 ```go
 package main
@@ -26,13 +26,13 @@ import "fmt"
 func main () {
   init := 30
   end  := 50
-  // Here goes your code
-  
+  // Здесь пишите ваш код
+
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -42,7 +42,7 @@ import "fmt"
 func main () {
   init := 30
   end := 50
-  
+
   for (init <= end) {
     fmt.Println(init)
     init++

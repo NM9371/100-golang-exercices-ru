@@ -1,12 +1,12 @@
-# Exercise: Structs
+# Упражнение: Структуры
 
-## What are structs?
+## Что такое структуры?
 
-In golang, there is no 'class' keyword to define an object, in golang the concept to create a collection of members of different data types into a single variable are called structs (structures).
+В Go нет ключевого слова `class` для определения объектов. В Go концепция объединения полей разных типов данных в одну переменную называется структурой (struct).
 
-A struct is a typed collection of fields.
-It can hold any type, even other structs.
-An example of a struct:
+Структура — это типизированная коллекция полей.
+Она может хранить данные любого типа, в том числе другие структуры.
+Пример структуры:
 
 ```go
 type Person struct {
@@ -17,24 +17,24 @@ type Person struct {
 }
 ```
 
-You can see that the Person object contains 4 members: `name`,`age`,`job` and `salary`.
-The members can be from different data types.
+Объект `Person` содержит 4 поля: `name`, `age`, `job` и `salary`.
+Поля могут быть разных типов данных.
 
-## Accessing struct members
+## Доступ к полям структуры
 
-To access any member of a structure, use the dot operator (.) between the structure variable name and the structure member:
+Для доступа к любому полю структуры используйте оператор точки (.) между именем переменной-структуры и именем поля:
 
 ```go
 func main() {
   var pers1 Person
 
-  // Pers1 specification
+  // Задаём данные Pers1
   pers1.name = "Hege"
   pers1.age = 45
   pers1.job = "Teacher"
   pers1.salary = 1000
 
-  // Access and print Pers1 info
+  // Читаем и выводим данные Pers1
   fmt.Println("Name: ", pers1.name) // Output: 'Name: Hege'
   fmt.Println("Age: ", pers1.age)
   fmt.Println("Job: ", pers1.job)
@@ -42,12 +42,12 @@ func main() {
 }
 ```
 
-## Anonymous structs
+## Анонимные структуры
 
-A struct that doesn't have a name is called an anonymous struct, you can see lots of them in [table-driven tests](https://go.dev/wiki/TableDrivenTests).
+Структура без имени называется анонимной. Их часто можно встретить в [табличных тестах](https://go.dev/wiki/TableDrivenTests).
 
-Anonymous structs are defined without a name and therefore cannot be referenced elsewhere in the code.
-To create an anonymous struct, just instantiate the instance immediately using a second pair of brackets after declaring the type:
+Анонимные структуры определяются без имени и поэтому не могут быть использованы в других местах кода.
+Чтобы создать анонимную структуру, достаточно сразу создать её экземпляр, добавив вторую пару фигурных скобок после объявления типа:
 
 ```go
 newCar := struct {
@@ -61,18 +61,18 @@ newCar := struct {
 }
 ```
 
-Exercise: Create a structure named `Hotel` with three members `numRooms`,`streetName` and `hasPool`
+Упражнение: Создайте структуру `Hotel` с тремя полями: `numRooms`, `streetName` и `hasPool`
 
 - numRooms int32
 - streetName string
 - hasPool bool
 
-Then assign a value to each of those attributes
+Затем присвойте значение каждому из этих полей.
 
-References:  
-[https://go.dev/tour/moretypes/2](https://go.dev/tour/moretypes/2)  
-[https://www.w3schools.com/go/go_struct.php](https://www.w3schools.com/go/go_struct.php)  
-[https://gobyexample.com/structs](https://gobyexample.com/structs)  
+Ссылки:
+[https://go.dev/tour/moretypes/2](https://go.dev/tour/moretypes/2)
+[https://www.w3schools.com/go/go_struct.php](https://www.w3schools.com/go/go_struct.php)
+[https://gobyexample.com/structs](https://gobyexample.com/structs)
 
 ```go
 package main
@@ -80,18 +80,18 @@ package main
 import "fmt"
 
 type Hotel struct {
-  // Your code goes here
+  // Ваш код здесь
 
 }
 
 func main () {
   var myHotel Hotel
-  // Your code goes here
+  // Ваш код здесь
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -99,7 +99,7 @@ package main
 import "fmt"
 
 type Hotel struct {
-  // Your code goes here
+  // Ваш код здесь
   numRooms int32
   streetName string
   hasPool bool
@@ -107,7 +107,7 @@ type Hotel struct {
 
 func main () {
   var myHotel Hotel
-  // Your code goes here
+  // Ваш код здесь
   myHotel.numRooms = 30
   myHotel.streetName = "Thaerstrasse"
   myHotel.hasPool    = true

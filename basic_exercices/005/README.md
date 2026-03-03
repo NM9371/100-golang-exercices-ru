@@ -1,31 +1,31 @@
-# Exercise: Format Verbs
+# Упражнение: Форматные глаголы
 
-Go provides an easy way to format verbs into your output. This is called formatting verbs.
-You tell the program how do you want the variable to be expressed, according to it's variable type.
+Go предоставляет удобный способ форматировать вывод с помощью форматных глаголов.
+Вы указываете программе, как хотите представить переменную в соответствии с её типом.
 
-The formatting verb acts like a placeholder for the variable that you pass into it, here are two examples
+Форматный глагол действует как заполнитель для переменной, которую вы в него передаёте. Вот два примера:
 
-The verb `%v` prints the value in it's default format
+Глагол `%v` выводит значение в формате по умолчанию
 
 ```go
 fmt.Printf("my string variable contains %v", dog_name)
 ```
 
-Will print "my string variable contains Scooby"
+Выведет "my string variable contains Scooby"
 
-The verb `%T` prints the variable type
+Глагол `%T` выводит тип переменной
 
 ```go
 fmt.Printf("my string variable is of type %T", dog_name)
 ```
 
-Will print "my string variable is of type string"
+Выведет "my string variable is of type string"
 
-You can check all the format verbs in the documentation: https://pkg.go.dev/fmt#hdr-Printing
+Все форматные глаголы можно найти в документации: https://pkg.go.dev/fmt#hdr-Printing
 
-Exercise: Print some verbs with their corresponding letter
+Упражнение: Выведите несколько форматных глаголов с соответствующими им буквами
 
-- Format verbs are followed by a '%' character.
+- Форматные глаголы предваряются символом '%'.
 
 ```go
 package main
@@ -43,13 +43,13 @@ func main () {
   legal = false
   weight = 70.12
 
-  // Here goes your code
+  // Здесь пишите ваш код
   fmt.Printf("My name is __, I am __ years old and it's __ that I can drive a car, my pet weights __ kilograms", , , , )
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -57,7 +57,7 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
   var name string
   var age	int64
   var legal bool

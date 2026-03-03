@@ -1,10 +1,10 @@
-// Create an array of 5 strings, and initialize it's 2 first values with some random names
+// Создайте массив из 5 строк и инициализируйте первые 2 элемента произвольными именами
 
 package main
 
 import "fmt"
 
-func main () {
-	// Here goes your code
+func main() {
+	// Здесь пишите ваш код
 	fmt.Printf("...")
 }

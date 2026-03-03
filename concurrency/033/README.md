@@ -1,68 +1,67 @@
-# Exercise 33: Basic Channels
+# Упражнение 33: Основы каналов
 
-## What are Channels?
+## Что такое каналы?
 
-Channels are Go's way of allowing goroutines to communicate and synchronize. They follow Go's concurrency principle: **"Don't communicate by sharing memory; share memory by communicating."**
+Каналы — это способ Go позволить горутинам общаться и синхронизироваться. Они следуют принципу конкурентности Go: **«Не общайтесь через разделяемую память; разделяйте память через общение.»**
 
-Think of channels as pipes through which you can send and receive values between goroutines.
+Думайте о каналах как о трубах, через которые можно передавать и получать значения между горутинами.
 
-## Channel Basics
+## Основы каналов
 
-**Creating channels:**
+**Создание каналов:**
 
 ```go
-ch := make(chan string)  // Channel that carries strings
-ch := make(chan int)     // Channel that carries integers
+ch := make(chan string)  // Канал для строк
+ch := make(chan int)     // Канал для целых чисел
 ```
 
-**Channel operations:**
-- **Send**: `ch <- value` (send value into channel)
-- **Receive**: `value := <-ch` (receive value from channel)
+**Операции с каналами:**
+- **Отправка**: `ch <- value` (отправить значение в канал)
+- **Приём**: `value := <-ch` (получить значение из канала)
 
-## Unbuffered Channels (Synchronous)
+## Небуферизованные каналы (синхронные)
 
-By default, channels are unbuffered, which means:
+По умолчанию каналы небуферизованные, что означает:
 
-- **Sends block** until another goroutine is ready to receive
-- **Receives block** until another goroutine is ready to send
-- This creates a **synchronization point** between goroutines
+- **Отправка блокируется** до тех пор, пока другая горутина не готова принять
+- **Приём блокируется** до тех пор, пока другая горутина не готова отправить
+- Это создаёт **точку синхронизации** между горутинами
 
-## Communication Pattern
+## Паттерн обмена сообщениями
 
-The typical pattern is:
+Типичный паттерн:
 
-1. Create a channel
-2. Start one or more goroutines that will send/receive on the channel
-3. Use the channel operations to coordinate between goroutines
+1. Создать канал
+2. Запустить одну или несколько горутин, которые будут отправлять/принимать через канал
+3. Использовать операции с каналом для координации горутин
 
-Instead of guessing how long to wait with `time.Sleep()`, channels provide proper synchronization
-because they wait exactly as long as needed, race conditions are avoided and there's a clear communication intent.
+Вместо того чтобы угадывать время ожидания через `time.Sleep()`, каналы обеспечивают правильную синхронизацию: они ждут ровно столько, сколько нужно, избегают гонок данных и явно выражают намерение коммуникации.
 
-## Your Task
+## Задание
 
-Look at the `main.go` file and complete the exercise. You need to:
+Откройте файл `main.go` и выполните упражнение:
 
-1. Understand how to send messages through channels
-2. Understand how to receive messages from channels
-3. Set up communication between two goroutines
+1. Поймите, как отправлять сообщения через каналы
+2. Поймите, как получать сообщения из каналов
+3. Настройте взаимодействие между двумя горутинами
 
-## Expected Behavior
+## Ожидаемое поведение
 
-When completed, you should see `f2` printing a message that includes the message sent from `f1`. The program will coordinate properly without needing to guess timing.
+После выполнения вы увидите, как `f2` выводит сообщение, включающее сообщение, отправленное из `f1`. Программа будет корректно координировать без необходимости угадывать тайминги.
 
-## Key Points to Remember
+## Ключевые моменты
 
-- Channels are typed - a `chan string` only carries strings
-- Unbuffered channel operations are synchronous
-- The arrow `<-` shows the direction of data flow
-- Channel operations will block until both sides are ready
+- Каналы типизированы — `chan string` несёт только строки
+- Операции с небуферизованным каналом синхронны
+- Стрелка `<-` показывает направление потока данных
+- Операции с каналом блокируются до готовности обеих сторон
 
 ```go
-// It's important to get this concept, document yourself first! :)
-// There are two concurrent routines (f1 and f2)
-// Send a message "Hello from f1" from f1 function
-// Receive the message from f1 into the f2 function, and print "I am f2 and ..." + the message from f1
-// This should be done with a channel
+// Важно понять эту концепцию, сначала изучите самостоятельно! :)
+// Есть две конкурентные горутины (f1 и f2)
+// Отправьте сообщение "Hello from f1" из функции f1
+// Получите сообщение из f1 в функции f2 и выведите "I am f2 and ..." + сообщение от f1
+// Сделайте это с помощью канала
 
 package main
 
@@ -78,20 +77,20 @@ func f2 (c chan string){
 }
 func main () {
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
+  // эта пауза нужна, чтобы не завершить программу раньше времени :)
   time.Sleep(1 * time.Second)
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels
+// Упражнение: Каналы
 
-// It's important to get this concept, document yourself first! :)
-// There are two concurrent routines (f1 and f2)
-// Send a message "Hello from f1" from f1 function
+// Важно понять эту концепцию, сначала изучите самостоятельно! :)
+// Есть две конкурентные горутины (f1 и f2)
+// Отправьте сообщение "Hello from f1" из функции f1
 
 package main
 
@@ -107,12 +106,12 @@ func f2 (c chan string){
   fmt.Println("I am f2 and...", msg)
 }
 func main () {
-  // Your code goes here
+  // Ваш код здесь
   var c chan string = make(chan string)
   go f1(c)
   go f2(c)
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
+  // эта пауза нужна, чтобы не завершить программу раньше времени :)
   time.Sleep(1 * time.Second)
 }
 ```

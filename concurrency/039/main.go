@@ -1,36 +1,34 @@
-// Exercise: Multiple different channels
+// Упражнение: Несколько разных каналов
 
-// We will make use of the 'select' statement
-// Create three different channels "c1,c2,c3" for a goroutine called "name"
-// The go routine will have 2 arguments, first the channel (type string) and then a name (type string)
-// Inside the goroutine (function) will be:
-// 1- An infinite loop:
-// 1.1- The second argument "name" will be ingested into the channel
-// 1.2- Wait for 2 seconds
+// Используем оператор 'select'
+// Создайте три разных канала "c1,c2,c3" для горутины с именем "name"
+// Горутина будет иметь 2 аргумента: сначала канал (тип string), затем имя (тип string)
+// Внутри горутины (функции) будет:
+// 1- Бесконечный цикл:
+// 1.1- Второй аргумент "name" будет записан в канал
+// 1.2- Подождать 2 секунды
 
-// In the main program
-// call 3 times the 'name' goroutine with a different name each
-// make an infinite loop containing the select statement
-// Inside that select, put 3 'case' keywords. In each case print the name for each different channel.
+// В главной программе
+// вызовите горутину 'name' 3 раза с разным именем каждый раз
+// создайте бесконечный цикл, содержащий оператор select
+// Внутри select поместите 3 ключевых слова 'case'. В каждом случае выведите имя для каждого разного канала.
 
 package main
 
 import "fmt"
 import "time"
 
-func name(c chan string, name string){
-	
+func name(c chan string, name string) {
+
 }
 
-func main () {
+func main() {
 	var c1 chan string = make(chan string)
 	var c2 chan string = make(chan string)
 	var c3 chan string = make(chan string)
 
 	for {
-		select {
-		
-		}
+		select {}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }

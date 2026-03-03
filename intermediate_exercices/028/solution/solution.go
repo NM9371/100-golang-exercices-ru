@@ -1,6 +1,6 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a function that sums 2 numbers, then call that function from another function that sums another number.
+// Создайте функцию, складывающую 2 числа, затем вызовите её из другой функции, которая складывает ещё одно число.
 
 package main
 
@@ -11,13 +11,13 @@ func sum(x int, y int) int {
 }
 
 func secondsum(x, y, z int) int {
-	return sum(x,y) + z 
+	return sum(x, y) + z
 }
 
-func main () {
-	// Your code goes here
+func main() {
+	// Ваш код здесь
 	var result int
-	result = secondsum(2,3,5)
+	result = secondsum(2, 3, 5)
 
 	fmt.Println(result)
 }

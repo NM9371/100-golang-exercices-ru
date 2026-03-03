@@ -1,26 +1,26 @@
-# Exercise: For loops
+# Упражнение: Циклы for
 
-Loops are a crucial element in software engineering. They are usually used to fetch each element of a data structure, to populate multiple values while adding some logic into your code without repeating yourself.
+Циклы — важнейший элемент разработки программного обеспечения. Они обычно используются для перебора каждого элемента структуры данных, для заполнения нескольких значений с добавлением логики без повторения кода.
 
-The anatomy of a for loop is as follows, you need 3 parameters in this order:
+Анатомия цикла for такова: необходимо 3 параметра в следующем порядке:
 
-1. The initial value (sometimes called iterator variable, because it iterates at every loop)
-2. The condition in which the loop will exit. Infinite loops should be avoided.
-3. The alteration in the iterator variable, always bringing it closer to exiting the loop.
+1. Начальное значение (иногда называется переменной-итератором, потому что она изменяется при каждой итерации)
+2. Условие, при котором цикл завершится. Бесконечных циклов следует избегать.
+3. Изменение переменной-итератора, всегда приближающее её к выходу из цикла.
 
-The syntax to create such a loop would be like this:
+Синтаксис создания такого цикла выглядит следующим образом:
 
 ```go
 var iterator = 0
 
-// for <iterator variable initial state>; <condition for loop>; <iterator alteration>
+// for <начальное значение итератора>; <условие цикла>; <изменение итератора>
 for iterator ; iterator < 3 ; iterator++ {
   fmt.Println(iterator)
-  fmt.Println("I am inside the loop!") 
+  fmt.Println("I am inside the loop!")
 }
 ```
 
-The above code snippet will print:
+Приведённый выше фрагмент кода выведет:
 0
 "I am inside the loop!"
 1
@@ -28,10 +28,10 @@ The above code snippet will print:
 2
 "I am inside the loop!"
 
-Exercise: Iterate through all the array and add two (+2) to each value
+Упражнение: Пройдитесь по всему массиву и добавьте два (+2) к каждому значению
 
-- Hint: The iterator variable can be used as an index to fetch all the elements of an array!
-- Tip: If you somehow create an infinite loop, hit `Control + C` to send a SIGINT signal to your program, forcing it to terminate the process, and therefore stop looping.
+- Подсказка: Переменную-итератор можно использовать как индекс для доступа ко всем элементам массива!
+- Совет: Если вы случайно создали бесконечный цикл, нажмите `Control + C`, чтобы отправить сигнал SIGINT вашей программе, принудительно завершив процесс и остановив цикл.
 
 ```go
 package main
@@ -39,15 +39,15 @@ package main
 import "fmt"
 
 func main () {
-  // initialized array of 10 int values [0..9]
+  // инициализированный массив из 10 значений int [0..9]
   var arr = [10]int{0,1,2,3,4,5,6,7,8,9}
-  // Here goes your code
+  // Здесь пишите ваш код
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main

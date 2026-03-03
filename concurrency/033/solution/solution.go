@@ -1,28 +1,28 @@
-// Exercise: Channels
+// Упражнение: Каналы
 
-// It's important to get this concept, document yourself first! :)
-// There are two concurrent routines (f1 and f2)
-// Send a message "Hello from f1" from f1 function
+// Важно понять эту концепцию, сначала изучите самостоятельно! :)
+// Есть две конкурентные горутины (f1 и f2)
+// Отправьте сообщение "Hello from f1" из функции f1
 
 package main
 
 import "fmt"
 import "time"
 
-func f1 (c chan string){
-  c <- "Hello from f1"
+func f1(c chan string) {
+	c <- "Hello from f1"
 }
 
-func f2 (c chan string){
-  msg := <- c
-  fmt.Println("I am f2 and...", msg)
+func f2(c chan string) {
+	msg := <-c
+	fmt.Println("I am f2 and...", msg)
 }
-func main () {
-  // Your code goes here
-  var c chan string = make(chan string)
-  go f1(c)
-  go f2(c)
+func main() {
+	// Ваш код здесь
+	var c chan string = make(chan string)
+	go f1(c)
+	go f2(c)
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
-  time.Sleep(1 * time.Second)
+	// эта пауза нужна, чтобы не завершить программу раньше времени :)
+	time.Sleep(1 * time.Second)
 }

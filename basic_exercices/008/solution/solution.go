@@ -1,15 +1,15 @@
-// Exercise: Arrays
-// Create an array of 10 "int8" values, in it's initialization, fill those values from 0 to 9
+// Упражнение: Массивы
+// Создайте массив из 10 значений типа "int8" и при инициализации заполните его значениями от 0 до 9
 
 package main
 
 import "fmt"
 
-func main () {
-	var arr = [5]string{"thomas","phillip"}
+func main() {
+	var arr = [5]string{"thomas", "phillip"}
 
-	// Print the array
+	// Выводим массив
 	for i := 0; i < len(arr); i++ {
-        fmt.Println(arr[i])
-    }
+		fmt.Println(arr[i])
+	}
 }

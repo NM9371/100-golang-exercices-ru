@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func main () {
+func main() {
 	fmt.Println("Hello World!")
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go
 
-// To build an executable file
+// Чтобы собрать исполняемый файл:
 // - go build solution.go

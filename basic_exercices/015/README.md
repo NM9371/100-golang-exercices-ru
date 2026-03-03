@@ -1,18 +1,18 @@
-# Exercise: Recap
+# Упражнение: Итоговое упражнение
 
-This is the final exercise from the basic_exercises block. You will put in practice what you've learned.
+Это последнее упражнение блока basic_exercises. Вы применёте на практике всё, что узнали.
 
-In this exercise, we are going to check wether the user has entered a number and if the number is even.
+В этом упражнении мы проверим, ввёл ли пользователь число и является ли это число чётным.
 
-An even number is the one that is divisible by 2 with no remainder.
-In order to get the remainder from a division, there is the [remainder/modulo operator](https://en.wikipedia.org/wiki/Modulo) `%`.
+Чётное число — это число, делящееся на 2 без остатка.
+Для получения остатка от деления используется [оператор остатка/модуля](https://en.wikipedia.org/wiki/Modulo) `%`.
 
-For simplicity, we are not going to check if the input is a number or not, we are assuming always a number is entered.
+Для простоты мы не будем проверять, является ли ввод числом — предполагается, что пользователь всегда вводит число.
 
-- Define an `int32` variable called `number`
-- Create a function to check if a number is even, the function will be called `isEven`
-- The function will print to the standard output if the number is even or odd.
-- That function will return a `bool` value.
+- Определите переменную типа `int32` с именем `number`
+- Создайте функцию для проверки чётности числа; функция будет называться `isEven`
+- Функция выводит в стандартный вывод, является ли число чётным или нечётным.
+- Функция возвращает значение типа `bool`.
 
 ```go
 package main
@@ -20,13 +20,13 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
   fmt.Printf("...")
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -45,7 +45,7 @@ func isEven(number int32) bool {
   if (number % 2 == 0) {
     fmt.Println("is even")
     return true
-  }  else { 
+  }  else {
     fmt.Println("is odd")
     return false
   }

@@ -1,15 +1,14 @@
-// Exercise: Channels directions (only read/rx)
+// Упражнение: Направление каналов (только чтение/rx)
 
-// Make a goroutine with a channel for only receive data.
-// The function should be called "receive" and the receive-only channel should be it's 1st and only argument
-// Sending data from that channel is prohibited / will cause compiler errors
-// Feed some string into that channel.
-
+// Создайте горутину с каналом только для получения данных.
+// Функция должна называться "receive", а канал только для чтения должен быть её 1-м и единственным аргументом
+// Отправка данных в этот канал запрещена / вызовет ошибку компиляции
+// Подайте в этот канал какую-нибудь строку.
 
 package main
 
 import "fmt"
 
-func main () {
-	
+func main() {
+
 }

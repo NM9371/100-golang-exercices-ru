@@ -1,19 +1,19 @@
-// Exercise: Conditional
-// Check if the range of a number is between 20 and 30
-// If the number is below 20 print : too cold
-// If the number is inbetween print: perfect
-// If the number is above 30 print : so hot
+// Упражнение: Условные операторы
+// Проверьте, находится ли число в диапазоне от 20 до 30
+// Если число меньше 20, выведите: too cold
+// Если число в диапазоне, выведите: perfect
+// Если число больше 30, выведите: so hot
 
-// Use if and a else if!
+// Используйте if и else if!
 
 package main
 
 import "fmt"
 
-func main () {
+func main() {
 	fmt.Println("Give me a number")
 	var number int
 	fmt.Scanln(&number)
-	// Here goes your code
-	
+	// Здесь пишите ваш код
+
 }

@@ -1,15 +1,13 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a variadic function that sums many numbers passed as arguments
-// Variadic functions can be called with any number of arguments.
-
+// Создайте вариадическую функцию, которая суммирует переданные ей числа
+// Вариадические функции могут вызываться с любым числом аргументов.
 
 package main
 
 import "fmt"
 
+func main() {
+	// Ваш код здесь
 
-func main () {
-	// Your code goes here
-	
 }

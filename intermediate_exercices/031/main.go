@@ -1,17 +1,16 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a recursive function that returns the sequence of fibonacci up until the nth number
-
+// Создайте рекурсивную функцию, возвращающую последовательность Фибоначчи до n-го числа
 
 package main
 
 import "fmt"
 
-func fibonacci(x int) int{
-	
+func fibonacci(x int) int {
+
 }
 
-func main () {
-	// Your code goes here
+func main() {
+	// Ваш код здесь
 	fmt.Println(fibonacci(9))
 }

@@ -1,18 +1,17 @@
-// Exercise: Channels - Range
+// Упражнение: Каналы — range
 
-// In this exercise we will use the range keyword to iterate over a buffered (async) channel.
-// Create a buffered channel (type int) of a dimension of 5
-// Put 5 numbers into the channel
-// use the 'range' keyword to iterate over the channel elements and print them
+// В этом упражнении мы будем использовать ключевое слово range для итерации по буферизованному (асинхронному) каналу.
+// Создайте буферизованный канал (тип int) размерностью 5
+// Поместите 5 чисел в канал
+// Используйте ключевое слово 'range' для итерации по элементам канала и их вывода
 
-// TIP: but buffered channels need to be closed before iterating over them!!! 
+// ПОДСКАЗКА: буферизованные каналы нужно закрыть перед итерацией по ним!!!
 
 package main
 
 import "fmt"
 
-
-func main () {
-	var c chan int = make(chan int,5)
+func main() {
+	var c chan int = make(chan int, 5)
 
 }

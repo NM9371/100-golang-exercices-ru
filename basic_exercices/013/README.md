@@ -1,45 +1,45 @@
-# Exercise: Conditionals
+# Упражнение: Условные операторы
 
-Conditionals are another fundamental topic in programming and the building blocks of algebraic and propositional logic.
-Conditional statements are used to perform different actions based on different conditions.
+Условные операторы — ещё одна фундаментальная тема в программировании и строительные блоки алгебраической и пропозициональной логики.
+Условные операторы используются для выполнения различных действий в зависимости от условий.
 
-A condition can be either `true` or `false`, and depending on that result it will run a unique execution flow, like in  this image:  
+Условие может быть `true` или `false`, и в зависимости от результата выполняется уникальная ветка выполнения, как показано на этом изображении:
 
 ![if-then chart](if-then.png)
 
-Go supports the usual comparison operators from mathematics:
-Less than `<`
-Less than or equal `<=`
-Greater than `>`
-Greater than or equal `>=`
-Equal to `==`
-Not equal to `!=`
+Go поддерживает стандартные операторы сравнения из математики:
+Меньше `<`
+Меньше или равно `<=`
+Больше `>`
+Больше или равно `>=`
+Равно `==`
+Не равно `!=`
 
-Additionally, Go supports the usual logical operators:
-Logical AND `&&`
-Logical OR `||`
-Logical NOT `!`
+Дополнительно Go поддерживает стандартные логические операторы:
+Логическое И `&&`
+Логическое ИЛИ `||`
+Логическое НЕ `!`
 
-Here is a code example about how conditional works:
+Вот пример кода, демонстрирующий работу условных операторов:
 
 ```go
 var speed=50
 
-// Single condition, nothing happens if it is not satisfied.
+// Одно условие — ничего не происходит, если оно не выполнено.
 if (speed > 60 ){
   fmt.Printf("Only fast animals will see this message")
 }
-// Output: 
+// Вывод:
 
-// Single condition, if not satisfied falls into the `else` block.
+// Одно условие — если не выполнено, выполняется блок `else`.
 if (speed < 50){
   fmt.Printf("Going slow")
 } else {
   fmt.Printf("You are a fast animal!")
 }
-// Output: You are a fast animal!
+// Вывод: You are a fast animal!
 
-// Multiple conditions
+// Несколько условий
 if (speed < 20){
   fmt.Printf("Going slow")
 } else if ( speed >= 20 && speed < 30 ) {
@@ -51,28 +51,28 @@ if (speed < 20){
 } else {
   fmt.Printf("You are the fastest of 'em all!")
 }
-// Output: You are mega super fast
+// Вывод: You are mega super fast
 ```
 
-You can use operators or their combinations to create conditions for different decisions, as we've seen with `( speed >= 40 && speed <= 80 )`.
-Operators also have precedence, that should be taken into consideration. You can find it in the [go spec](https://go.dev/ref/spec#Operator_precedence), you can modify that precedence by adding parentheses in which operations you want to do together.
+Операторы и их комбинации можно использовать для создания условий при различных решениях, как мы видели с `( speed >= 40 && speed <= 80 )`.
+Операторы также имеют приоритет, который необходимо учитывать. Его можно найти в [спецификации go](https://go.dev/ref/spec#Operator_precedence); изменить приоритет можно, добавив скобки вокруг операций, которые нужно выполнить вместе.
 
 ```go
 42 + 2 * 8  // 42 + (2 * 8) = 58
 (42 + 2) * 8 // (42 + 2) * 8 = 352
 ```
 
-In the code above we changed the priority of the operators by adding parentheses
+В приведённом выше коде приоритет операторов изменён с помощью скобок
 
-Exercise:
+Упражнение:
 
-- Check if the range of a number is between 20 and 30
-- If the number is below 20 print : too cold
-- If the number is inbetween print: perfect
-- If the number is above 30 print : so hot
+- Проверьте, находится ли число в диапазоне от 20 до 30
+- Если число меньше 20, выведите: too cold
+- Если число в диапазоне, выведите: perfect
+- Если число больше 30, выведите: so hot
 
 ```go
-// Use if and a else if!
+// Используйте if и else if!
 package main
 
 import "fmt"
@@ -92,7 +92,7 @@ func main () {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main

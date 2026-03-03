@@ -1,77 +1,77 @@
-# Exercise 35: Channel Synchronization
+# Упражнение 35: Синхронизация с помощью каналов
 
-## The Problem with Goroutines and the `main()` function
+## Проблема горутин и функции `main()`
 
-When you start a goroutine, the main function doesn't automatically wait for it to complete. If the main function ends, the entire program terminates - even if goroutines are still running.
+Когда вы запускаете горутину, функция main не ждёт её завершения автоматически. Если main завершится, вся программа прекратит работу — даже если горутины ещё выполняются.
 
-## Synchronization Patterns
+## Паттерны синхронизации
 
-There are several ways to wait for goroutines to complete:
-1. **`time.Sleep()`** - crude, unreliable (what if task takes longer?)
-2. **Channel synchronization** - precise, reliable
-3. **sync.WaitGroup** - for multiple goroutines (you'll learn this later, also reliable)
+Есть несколько способов дождаться завершения горутин:
+1. **`time.Sleep()`** — грубый, ненадёжный (что если задача займёт больше времени?)
+2. **Синхронизация через канал** — точная, надёжная
+3. **sync.WaitGroup** — для нескольких горутин (изучите позже, тоже надёжный)
 
-For now we've seen mostly `time.Sleep()` in order to learn and see the go routine behaviours
-in our path to become great engineers we must adapt and learn elegant and reliable solutions.
+До сих пор мы в основном использовали `time.Sleep()`, чтобы изучить поведение горутин.
+На пути к тому, чтобы стать хорошими инженерами, мы должны адаптироваться и учиться элегантным и надёжным решениям.
 
-## Channel Synchronization
+## Синхронизация через канал
 
-Using a channel to signal completion is a clean, idiomatic Go pattern:
+Использование канала для сигнализации завершения — это чистый, идиоматичный паттерн Go:
 
 ```go
 func worker(done chan bool) {
-    // Do work...
-    done <- true  // Signal completion
+    // Выполнить работу...
+    done <- true  // Сигнал о завершении
 }
 
 func main() {
     done := make(chan bool)
     go worker(done)
-    <-done  // Wait for completion signal
+    <-done  // Ожидание сигнала о завершении
 }
 ```
 
-## How It Works
+## Как это работает
 
-1. **Create channel**: Usually `chan bool` for simple signaling
-2. **Start goroutine**: Pass the channel to the goroutine function
-3. **Goroutine signals**: Sends a value when work is complete
-4. **Main waits**: Receives from channel (blocks until signal arrives)
+1. **Создать канал**: обычно `chan bool` для простой сигнализации
+2. **Запустить горутину**: передать канал в функцию горутины
+3. **Горутина сигнализирует**: отправляет значение по завершении работы
+4. **Main ждёт**: получает из канала (блокируется до прихода сигнала)
 
-## Why This is Better Than Sleep
+## Почему это лучше, чем Sleep
 
-- **Precise timing**: Waits exactly as long as needed
-- **No guessing**: No need to estimate how long work takes
-- **Reliable**: Works regardless of system load or work complexity
-- **Clear intent**: Code clearly shows synchronization purpose
+- **Точное время**: ждёт ровно столько, сколько нужно
+- **Без угадываний**: не нужно оценивать, как долго займёт работа
+- **Надёжность**: работает независимо от нагрузки системы или сложности задачи
+- **Явное намерение**: код чётко показывает цель синхронизации
 
-## Signal Values
+## Значения сигналов
 
-Common patterns for signaling:
-- `chan bool` - just send `true` when done
-- `chan struct{}` - more memory efficient, send `struct{}{}`
-- `chan error` - can signal completion AND return error status
+Распространённые паттерны для сигнализации:
+- `chan bool` — просто отправьте `true` по завершении
+- `chan struct{}` — экономит память, отправляйте `struct{}{}`
+- `chan error` — может сигнализировать о завершении И возвращать статус ошибки
 
-## Your Task
+## Задание
 
-Look at the `main.go` file. The goroutine is already set up to send a completion signal. You need to add the code that waits for this signal in the main function.
+Посмотрите на файл `main.go`. Горутина уже настроена на отправку сигнала завершения. Вам нужно добавить код, который ждёт этого сигнала в функции main.
 
-## Expected Behavior
+## Ожидаемое поведение
 
-When completed correctly:
-1. The program starts the `task` goroutine
-2. Main function waits for the completion signal
-3. You see "running..." then "done" before the program exits
-4. The program doesn't exit early
+После правильного выполнения:
+1. Программа запускает горутину `task`
+2. Функция main ждёт сигнала завершения
+3. Вы видите "running..." затем "done" перед завершением программы
+4. Программа не завершается преждевременно
 
-## Hint
+## Подсказка
 
-You need exactly one line of code that receives from the `done` channel. The receive operation will block until the goroutine sends the completion signal.
+Вам нужна ровно одна строка кода, которая получает из канала `done`. Операция получения будет блокироваться до тех пор, пока горутина не отправит сигнал завершения.
 
 ```go
-// Exercise: Channels synchronisation
+// Упражнение: Синхронизация каналов
 
-// We have a goroutine task, learn how the channel synchronisation works and make the program wait for the asynchronous function (make it synchronous ;) )
+// У нас есть горутина task, изучите, как работает синхронизация через канал, и заставьте программу ждать асинхронную функцию (сделайте её синхронной ;) )
 
 package main
 
@@ -90,18 +90,18 @@ func main () {
   var done chan bool = make(chan bool)
   go task(done)
 
-  // Your code goes here
+  // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels synchronisation
+// Упражнение: Синхронизация каналов
 
-// We have a goroutine task, learn how the channel synchronisation works and make the program wait for the asynchronous function (make it synchronous ;) )
+// У нас есть горутина task, изучите, как работает синхронизация через канал, и заставьте программу ждать асинхронную функцию (сделайте её синхронной ;) )
 
 package main
 
@@ -120,8 +120,8 @@ func main () {
   var done chan bool = make(chan bool)
   go task(done)
 
-  // What would happen if we comment out this next line "<- done"?
-  // Your code goes here
+  // Что произойдёт, если закомментировать следующую строку "<- done"?
+  // Ваш код здесь
   <- done
 }
 ```

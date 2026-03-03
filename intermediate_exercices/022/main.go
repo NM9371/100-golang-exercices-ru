@@ -1,14 +1,14 @@
-// Exercise: Random
-// Create a program that mimics a dice roll (a 6-face dice)
+// Упражнение: Случайные числа
+// Напишите программу, имитирующую бросок игральной кости (6 граней)
 package main
 
 import (
-    "fmt"
-    "math/rand"
-    "time"
+	"fmt"
+	"math/rand"
+	"time"
 )
 
-func main () {
-	// Your code goes here
-	
+func main() {
+	// Ваш код здесь
+
 }

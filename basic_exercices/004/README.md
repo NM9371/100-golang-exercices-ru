@@ -1,32 +1,32 @@
-# Exercise: Two string variables
+# Упражнение: Две строковые переменные
 
-You can operate with strings. For instance we can build a quote by adding 2 string variables together:
+Со строками можно выполнять операции. Например, можно составить фразу, сложив 2 строковые переменные:
 
 ```go
 fmt.Println("My pet is called " + dog_name + ", and he loves" +  dog_favourite_food)
 ```
 
-There are multiple [conventions](https://en.wikipedia.org/wiki/Naming_convention_(programming)#Go) for variable naming, like `thisVariable` (camelCase), `this_variable` (snake_case), `this-variable` (kebab-case)...
+Существует несколько [соглашений](https://en.wikipedia.org/wiki/Naming_convention_(programming)#Go) об именовании переменных: `thisVariable` (camelCase), `this_variable` (snake_case), `this-variable` (kebab-case) и другие.
 
-In golang, camelCase and UpperCamelCase are preferred; making the first letter uppercase exports that piece of code, while lowercase makes it only usable within the current scope.
+В golang предпочтительны camelCase и UpperCamelCase; написание первой буквы в верхнем регистре экспортирует этот фрагмент кода, а нижний регистр делает его доступным только в текущей области видимости.
 
-Exercise: Concatenate two string variables and print it's result
+Упражнение: Конкатенируйте две строковые переменные и выведите результат
 
-- One variable should be called "helloWorld" and the other "itsMeMario"
-- There should be a space between them
+- Одна переменная должна называться "helloWorld", другая — "itsMeMario"
+- Между ними должен быть пробел
 
 ```go
 package main
 
 func main() {
-  // Here goes your code
+  // Здесь пишите ваш код
   var helloWorld, itsMeMario string
   // ...
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -34,15 +34,15 @@ package main
 import "fmt"
 
 func main() {
-  // Creating new variable called helloWorld
+  // Создаём новую переменную с именем helloWorld
   var helloWorld, itsMeMario string
   helloWorld = "Hello World!"
   itsMeMario = "It's a me, Mario"
-  // Print the variable
+  // Выводим переменную
   fmt.Println(helloWorld + " " + itsMeMario)
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go
 ```
 

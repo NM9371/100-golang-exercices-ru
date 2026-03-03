@@ -1,36 +1,36 @@
-# Exercise: Read a file
+# Упражнение: Чтение файла
 
-To read a file, there is the [os.ReadFile()](https://pkg.go.dev/os#ReadFile) function.
-The function signature is:
+Для чтения файла используется функция [os.ReadFile()](https://pkg.go.dev/os#ReadFile).
+Её сигнатура:
 
 ```go
 func ReadFile(name string) ([]byte, error)
 ```
 
-see that it returns an array of `byte`, how do we read that as humans? you may ask.
-Here's were we are going to learn about type conversions.
+Обратите внимание, что она возвращает массив `byte`. Как его читать людям? — спросите вы.
+Вот здесь мы познакомимся с преобразованием типов.
 
-## Type conversion
+## Преобразование типов
 
-Type conversion is the process of converting one type into another. For example an `int32` to a `float64` or a `[]byte` to a `string` and *Vice Versa*.
+Преобразование типов — это процесс преобразования одного типа в другой. Например, `int32` в `float64` или `[]byte` в `string` и обратно.
 
-Not to be confused with type casting. There is no such thing in golang
-> In type casting, a data type is converted into another data type by a programmer using casting operator. Whereas in type conversion, a data type is converted into another data type by a compiler.
+Не путать с приведением типов (type casting) — в Go его нет.
+> При приведении типов программист явно преобразует тип с помощью оператора приведения. При преобразовании типов это делает компилятор.
 
-## Converting a type
+## Как преобразовать тип
 
-To convert a type in golang, you add the type you want the variable to be converted to and then wrap the variable in parentheses
+В Go для преобразования типа нужно указать целевой тип и обернуть переменную в скобки:
 
 ```go
 var i int = 42
-var f float64 = float64(i) // now var f will contain the value 42, but won't be an integer!
+var f float64 = float64(i) // теперь f содержит значение 42, но уже не целое число!
 ```
 
-Remember golang is a statically typed language! meaning that if we tried to assign the variable `i` (of type `int`) directly to `f` (of type `float64`) we would have the `cannot use i (variable of type int) as float64 value in variable declaration` error!
+Помните, что Go — язык со статической типизацией! Если попытаться напрямую присвоить переменную `i` (типа `int`) в `f` (типа `float64`), получите ошибку `cannot use i (variable of type int) as float64 value in variable declaration`!
 
-Exercise: Read the `read.txt` file in this directory.
+Упражнение: Прочитайте файл `read.txt` в этой директории.
 
-Tip: You can convert an array of bytes to a string with `string(myArrayOfBytesVariable)`
+Подсказка: Массив байт можно преобразовать в строку с помощью `string(myArrayOfBytesVariable)`
 
 ```go
 package main
@@ -50,7 +50,7 @@ func main() {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -65,7 +65,7 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
-  fmt.Println(string(data)) // or os.Stdout.Write(data)
+  fmt.Println(string(data)) // или os.Stdout.Write(data)
 }
 ```
 

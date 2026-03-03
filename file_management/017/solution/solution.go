@@ -1,12 +1,12 @@
-// Exercise: Read a file
-// Tip: use the "io/ioutil" package
+// Упражнение: Чтение файла
+// Подсказка: используйте пакет "os"
 
-// beware: You should run this code where the read file is, or reference it!
+// Внимание: запускайте этот код там, где находится читаемый файл, или укажите полный путь!
 package main
 
 import (
+	"fmt"
 	"log"
-  	"fmt"
 	"os"
 )
 

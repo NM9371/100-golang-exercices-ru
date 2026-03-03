@@ -1,12 +1,12 @@
-// Exercise: Pointers
+// Упражнение: Указатели
 
-// Print the address of a variable
+// Выведите адрес памяти переменной
 package main
 
 import "fmt"
 
-func main () {
-    var x int = 5
-	// Your code goes here
-	
+func main() {
+	var x int = 5
+	// Ваш код здесь
+
 }

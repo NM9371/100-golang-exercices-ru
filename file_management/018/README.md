@@ -1,28 +1,28 @@
-# Exercise: Write to a file
+# Упражнение: Запись в файл
 
-In this exercise, we will create and write into a file, thanks to the [os.Create()](https://pkg.go.dev/os#Create) function.
+В этом упражнении мы создадим файл и запишем в него данные с помощью функции [os.Create()](https://pkg.go.dev/os#Create).
 
 ```go
-// os.Create function signature
+// Сигнатура функции os.Create
 func Create(name string) (*File, error)
 ```
 
-It will return the pointer to a `File` type. Then we can use the [os.WriteString()](https://pkg.go.dev/os#File.WriteString) function, to write a string into the file we have just created above.
+Она возвращает указатель на тип `File`. Затем можно использовать функцию [os.WriteString()](https://pkg.go.dev/os#File.WriteString), чтобы записать строку в созданный файл.
 
 ```go
-// os.WriteString function signature
+// Сигнатура функции os.WriteString
 func (f *File) WriteString(s string) (n int, err error)
 ```
 
-## Methods
+## Методы
 
-A method is a function with a special receiver argument.
+Метод — это функция с особым параметром-получателем (receiver).
 
-In this function signature above we see the `(f *File)` part between the `func` word and the function name. 
+В сигнатуре выше мы видим часть `(f *File)` между ключевым словом `func` и именем функции.
 
-This means that that function `WriteString` can only be called in variables of type `*File`. The receiver of the function is `f` in the function signature above.
+Это означает, что функция `WriteString` может вызываться только на переменных типа `*File`. Получатель функции — `f` в сигнатуре выше.
 
-Another example:
+Другой пример:
 
 ```go
 type Vertex struct {
@@ -30,7 +30,7 @@ type Vertex struct {
 }
 
 func (v Vertex) Abs() float64 {
-  // the receiver of the Abs() function will be a Vertex.
+  // получатель функции Abs() — Vertex.
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
@@ -40,10 +40,10 @@ func main() {
 }
 ```
 
-In this case, we can call `Abs()` into the `Vertex` "v".
+В этом случае `Abs()` вызывается на переменной типа `Vertex` — `v`.
 
-Exercise: Write a list of 5 countries to a file
-Tip: "\n" can be used as a newline in a string.
+Упражнение: Запишите список из 5 стран в файл
+Подсказка: `"\n"` можно использовать в строке для перевода строки.
 
 ```go
 package main
@@ -52,13 +52,13 @@ import "os"
 
 
 func main () {
-  // Here goes your code
+  // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -66,7 +66,7 @@ package main
 import "os"
 
 func main () {
-  // Here goes your code
+  // Ваш код здесь
   file, err := os.Create("countries.txt")
 
   if err != nil {

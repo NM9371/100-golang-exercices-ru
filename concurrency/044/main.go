@@ -1,23 +1,22 @@
-// Exercise: Channels - Range (unbuffered)
+// Упражнение: Каналы — range (небуферизованный)
 
-// In this exercise we will use the range keyword to iterate over a UNbuffered (sync) channel.
-// Create a unbuffered channel (type int)
-// Create a goroutine that:
-// Has an infinite loop -> prints the current second and waits for a second
-// Use the range iterator in the main function to see each second
+// В этом упражнении мы будем использовать ключевое слово range для итерации по НЕбуферизованному (синхронному) каналу.
+// Создайте небуферизованный канал (тип int)
+// Создайте горутину, которая:
+// Имеет бесконечный цикл -> выводит текущую секунду и ждёт одну секунду
+// Используйте итератор range в функции main, чтобы видеть каждую секунду
 
 package main
 
 import "fmt"
 import "time"
 
-func second(c chan int){
-	
+func second(c chan int) {
+
 }
 
-func main () {
+func main() {
 	var c chan int = make(chan int)
 	go second(c)
-	
-	
+
 }

@@ -1,11 +1,11 @@
-# Exercise: Range and Blank identifier
+# Упражнение: Range и пустой идентификатор
 
-Sometimes we don't need all the variables that are returned from methods or other functions.
-In those cases we have a variable called "blank identifier", which is used when we don't want to unnecerarily populate a variable.
+Иногда нам не нужны все переменные, возвращаемые методами или другими функциями.
+В таких случаях используется так называемый «пустой идентификатор», применяемый тогда, когда мы не хотим излишне заполнять переменную.
 
-The blank identifier is represented with an underscore `_` and it acts as a placeholder for the variable that we do not need.
+Пустой идентификатор обозначается символом подчёркивания `_` и служит заполнителем для переменной, которая нам не нужна.
 
-A simple example in the range loop, we don't care about the values this time but we only want to know the index:
+Простой пример с циклом range: на этот раз нас не интересуют значения — нужны только индексы:
 
 ```go
 var arr = [4]int{1,5,6,10}
@@ -15,12 +15,12 @@ for index, _ := range arr {
 }
 ```
 
-A very common use case for the blank identifier is in exception handling, when we just want to know if a variable returned an error code but not it's content or value, a blank identifier is often used.
+Очень распространённый случай использования пустого идентификатора — обработка исключений, когда нам важно лишь знать, вернула ли переменная код ошибки, но не её содержимое или значение.
 
-Exercise:
+Упражнение:
 
-- use range to print the values of the array
-- use the blank identifier variable to supress the index, DON'T show the index, just the values of the array!
+- используйте range для вывода значений массива
+- используйте пустой идентификатор, чтобы подавить вывод индекса — НЕ показывайте индекс, только значения массива!
 
 ```go
 package main
@@ -28,14 +28,14 @@ package main
 import "fmt"
 
 func main () {
-  // initialized array of 10 int values [1..10]
+  // инициализированный массив из 10 значений int [1..10]
   var arr = [10]int{1,2,3,4,5,6,7,8,9,10}
-  // Here goes your code
+  // Здесь пишите ваш код
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -45,7 +45,7 @@ import "fmt"
 func main () {
 
   var arr = [10]int{1,2,3,4,5,6,7,8,9,10}
-  
+
   for _, value := range arr {
     fmt.Print(value, "\n")
   }

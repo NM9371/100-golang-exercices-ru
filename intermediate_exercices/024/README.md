@@ -1,30 +1,30 @@
-# Exercise: Pointers
+# Упражнение: Указатели
 
-A pointer is a variable that stores the memory address of another variable or object.
-It's like a street address, pointing to the location where data is stored in the computer's memory. Pointers are useful for indirect memory access and memory manipulation.
+Указатель — это переменная, хранящая адрес памяти другой переменной или объекта.
+Это как почтовый адрес, указывающий на место, где хранятся данные в памяти компьютера. Указатели полезны для косвенного доступа к памяти и её модификации.
 
-The type `*T` is a pointer to a `T` value. Its zero value is `nil`.
+Тип `*T` — это указатель на значение типа `T`. Нулевое значение указателя равно `nil`.
 
-The `&` operator generates a pointer to its operand, in other words: To access the memory address of a variable you can prepend that variable with the `&` sign. See the following snippet as an example:
+Оператор `&` возвращает адрес своего операнда, то есть: чтобы получить адрес памяти переменной, нужно поставить перед ней знак `&`. Смотрите пример ниже:
 
 ```go
-// declare a pointer "p" of type int
+// Объявляем указатель "p" типа int
 var p *int
-// declare i (type int) and assign the value 42
+// Объявляем i (тип int) и присваиваем значение 42
 i := 42
 
-// assign the address of i to the pointer named "p"
+// Присваиваем адрес i указателю "p"
 p = &i
 
-// The * operator denotes the pointer's underlying value.
-fmt.Println(*p) // read i through the pointer p, prints: 42
-*p = 21         // set i through the pointer p
+// Оператор * даёт доступ к значению, на которое ссылается указатель.
+fmt.Println(*p) // читаем i через указатель p, выводит: 42
+*p = 21         // устанавливаем i через указатель p
 
-fmt.Println(i) // prints: 21
-// This is known as "dereferencing" or "indirecting".
+fmt.Println(i) // выводит: 21
+// Это называется "разыменование" (dereferencing/indirecting).
 ```
 
-Exercise: Print the memory address of a variable
+Упражнение: Выведите адрес памяти переменной
 
 ```go
 package main
@@ -33,13 +33,13 @@ import "fmt"
 
 func main () {
   var x int = 5
-  // Your code goes here
+  // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -48,7 +48,7 @@ import "fmt"
 
 func main () {
   var x int = 5
-  // Your code goes here
+  // Ваш код здесь
   fmt.Println(&x)
 }
 ```

@@ -1,7 +1,7 @@
-// Exercise: Create a program that puts the "Hello World!" string inside a string variable called "helloWorld"
+// Упражнение: Создайте программу, которая помещает строку "Hello World!" в строковую переменную с именем "helloWorld"
 
 package main
 
 func main() {
-	// Here goes your code
+	// Здесь пишите ваш код
 }

@@ -1,28 +1,27 @@
-# Exercise: Random II
+# Упражнение: Случайные числа II
 
-Randomness is not specific to generating a single value, you can also generate a value within a range, a random password containing specific characters, etc.
+Случайность применима не только к генерации отдельного значения — можно также генерировать число в заданном диапазоне, случайный пароль из определённых символов и т.д.
 
-## Randomness within a range
+## Случайное число в заданном диапазоне
 
-To generate a random number within a specific range, you calculate the range size by subtracting the minimum from the maximum, then add `1` as an offset. This shifts the result into the desired range.
+Чтобы сгенерировать случайное число в указанном диапазоне, вычисляется размер диапазона (максимум минус минимум), затем добавляется `1` как смещение. Это сдвигает результат в нужный диапазон.
 
-The function for that is called [rand.Intn()](https://pkg.go.dev/math/rand#Intn)
+Используемая функция — [rand.Intn()](https://pkg.go.dev/math/rand#Intn)
 
-Because this function is exclusive to the upper bound, that is between `0` and `100` the maximum number it can return is `99`.
+Эта функция не включает верхнюю границу, то есть при вызове с диапазоном от `0` до `100` максимальное возвращаемое значение равно `99`.
 
-Suppose you want a number between 5 and 10 (inclusive).
+Предположим, нам нужно число от 5 до 10 включительно.
 
-The numbers you want are:
-5, 6, 7, 8, 9, 10 — that's 6 numbers.
+Нужные числа: 5, 6, 7, 8, 9, 10 — всего 6 чисел.
 
-So the size of the range is:
+Размер диапазона:
 max - min + 1 → 10 - 5 + 1 = 6
 
-If we would not add the `+1`, the range would not include the upper bound (10 in the example).
+Без `+1` диапазон не будет включать верхнюю границу (в примере — 10).
 
-Exercise: Generate a random number from te range [-50, +50]
+Упражнение: Сгенерируйте случайное число из диапазона [-50, +50]
 
-- seed it with the current time in epoch
+- Используйте текущее время в формате unix epoch в качестве начального значения
 
 ```go
 package main
@@ -40,7 +39,7 @@ func main() {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main

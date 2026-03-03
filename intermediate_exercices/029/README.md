@@ -1,24 +1,24 @@
-# Exercise: Functions II
+# Упражнение: Функции II
 
-Functions can also return multiple values, like in this example:
+Функции также могут возвращать несколько значений, как в этом примере:
 
 ```go
 func convertCaps (name string) (string, string) {
-  // convert a name to capital letters, and return the original and the transformed one
+  // преобразуем имя в верхний регистр и возвращаем оригинал и преобразованную строку
   transformed := strings.ToUpper(name)
   return name, transformed
 }
 
 name, upperName := convertCaps("john")
-fmt.Printf("original: %v, transformed: %v", name, upperName) 
+fmt.Printf("original: %v, transformed: %v", name, upperName)
 // Output: original: john, transformed: JOHN
 ```
 
-Exercise:
+Упражнение:
 
-- Create a function that returns 2 integer values
-- The function will take 2 integers as input (int)
-- The first returned value will be the sum of the arguments, and the second the substraction of them
+- Создайте функцию, возвращающую 2 целочисленных значения
+- Функция принимает 2 целых числа (int) в качестве аргументов
+- Первое возвращаемое значение — сумма аргументов, второе — их разность
 
 ```go
 package main
@@ -26,18 +26,18 @@ package main
 import "fmt"
 
 func operation() () {
-    
+
 }
 
 func main () {
-    // Your code goes here
-    
+    // Ваш код здесь
+
 }
 
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main
@@ -47,12 +47,12 @@ import "fmt"
 func operation(x, y int) (int, int) {
     var sum, substraction int
     sum = x + y
-    substraction = x - y 
+    substraction = x - y
     return sum, substraction
 }
 
 func main () {
-    // Your code goes here
+    // Ваш код здесь
     sum, subs := operation(10,5)
     fmt.Println(sum, subs)
 }

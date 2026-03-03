@@ -1,30 +1,27 @@
-// Exercise: Channels and timeouts
+// Упражнение: Каналы и таймауты
 
-// Create a go routine that uses time.Sleep for 10 seconds, and then add the string "10 seconds passed" into the channel (of type string)
-// in the main program, inside the select block, have 2 cases:
-// 1- The message from the channel
-// 2- A timeout with the "time.After(3 * time.Second)" statement. After timeout happens, print "Timeout!!!!"
-
+// Создайте горутину, которая использует time.Sleep на 10 секунд, затем добавляет строку "10 seconds passed" в канал (типа string)
+// в главной программе внутри блока select имейте 2 случая:
+// 1- Сообщение из канала
+// 2- Таймаут с оператором "time.After(3 * time.Second)". После таймаута выведите "Timeout!!!!"
 
 package main
 
 import "fmt"
 import "time"
 
-func timeout(c chan string){
+func timeout(c chan string) {
 	for {
-		
+
 	}
 }
 
-func main () {
+func main() {
 	var c1 chan string = make(chan string)
 
 	go timeout(c1)
 	for {
-		select {
-		
-		}
+		select {}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }

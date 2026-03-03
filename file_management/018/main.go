@@ -1,11 +1,11 @@
-// Exercise: Write a list of 5 countries to a file
-// Tip: use the "os" package
+// Упражнение: Запишите список из 5 стран в файл
+// Подсказка: используйте пакет "os"
 
 package main
 
 import "os"
 
-func main () {
-	// Here goes your code
-	
+func main() {
+	// Ваш код здесь
+
 }

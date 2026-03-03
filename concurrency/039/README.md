@@ -1,39 +1,39 @@
-# Exercise 39: Select Statement with Multiple Channels
+# Упражнение 39: Оператор select с несколькими каналами
 
-## The Select Statement
+## Оператор select
 
-The `select` statement is like a `switch` statement for channels. It allows a goroutine to wait on multiple channel operations simultaneously and execute whichever case becomes ready first.
+Оператор `select` похож на `switch`, но для каналов. Он позволяет горутине одновременно ожидать операции с несколькими каналами и выполнять тот случай, который первым станет готов.
 
-## How Select Works
+## Как работает select
 
-1. **Evaluation**: All channel expressions are evaluated
-2. **Selection**: If multiple cases are ready, one is chosen **randomly**
-3. **Blocking**: If no cases are ready, select blocks until one becomes ready
-4. **Execution**: The chosen case executes, then select completes
+1. **Вычисление**: все выражения каналов вычисляются
+2. **Выбор**: если готовы несколько случаев, один выбирается **случайно**
+3. **Блокировка**: если ни один случай не готов, select блокируется до тех пор, пока один не станет готов
+4. **Выполнение**: выбранный случай выполняется, затем select завершается
 
-## Basic Select Syntax
+## Базовый синтаксис select
 
 ```go
 select {
 case msg1 := <-channel1:
-    fmt.Println("Received from channel1:", msg1)
+    fmt.Println("Получено из channel1:", msg1)
 case msg2 := <-channel2:
-    fmt.Println("Received from channel2:", msg2)
+    fmt.Println("Получено из channel2:", msg2)
 case channel3 <- "hello":
-    fmt.Println("Sent to channel3")
+    fmt.Println("Отправлено в channel3")
 }
 ```
 
-## Key Properties
+## Ключевые свойства
 
-- **Non-deterministic**: If multiple channels are ready, Go randomly chooses one
-- **Blocking**: Will wait until at least one case can proceed
-- **One execution**: Only one case runs per select statement
-- **Fair scheduling**: Random selection prevents one fast channel from starving others
+- **Недетерминированность**: если несколько каналов готовы, Go выбирает один случайно
+- **Блокировка**: будет ждать, пока хотя бы один случай не сможет продолжиться
+- **Одно выполнение**: на каждый оператор select выполняется только один случай
+- **Справедливое планирование**: случайный выбор предотвращает захват быстрым каналом
 
-## Infinite Select Loop
+## Бесконечный цикл select
 
-Common pattern for continuously monitoring multiple channels:
+Распространённый паттерн для непрерывного мониторинга нескольких каналов:
 
 ```go
 for {
@@ -46,47 +46,47 @@ for {
 }
 ```
 
-## Why Use Select?
+## Зачем использовать select?
 
-- **Multiplexing**: Handle multiple channels in one place
-- **Non-blocking patterns**: With default case (not in this exercise)
-- **Timeouts**: Using `time.After()` (you'll see this in exercise 40)
-- **Fan-in**: Combine multiple input channels into one handler
+- **Мультиплексирование**: обработка нескольких каналов в одном месте
+- **Неблокирующие паттерны**: с ветвью default (не в этом упражнении)
+- **Таймауты**: используя `time.After()` (изучите в упражнении 40)
+- **Fan-in**: объединение нескольких входных каналов в один обработчик
 
-## Your Task
+## Задание
 
-Complete the exercise to create a system with:
-1. Three channels (`c1`, `c2`, `c3`)
-2. A `name` function that sends names to a channel in an infinite loop
-3. Three goroutines running the `name` function with different names
-4. A select statement that receives from all three channels and prints the names
+Выполните упражнение, чтобы создать систему с:
+1. Тремя каналами (`c1`, `c2`, `c3`)
+2. Функцией `name`, которая отправляет имена в канал в бесконечном цикле
+3. Тремя горутинами, запускающими функцию `name` с разными именами
+4. Оператором select, который получает данные из всех трёх каналов и выводит имена
 
-## Expected Behavior
+## Ожидаемое поведение
 
-You should see names from all three goroutines appearing in random order, demonstrating that select fairly chooses between ready channels.
+Вы должны видеть имена из всех трёх горутин, появляющиеся в случайном порядке, что демонстрирует равномерный выбор select между готовыми каналами.
 
-## Important Notes
+## Важные замечания
 
-- The goroutines run forever (infinite loops)
-- Select will randomly pick among ready channels
-- You'll see interleaved output from all three goroutines
-- The program runs forever (use Ctrl+C to stop)
+- Горутины работают вечно (бесконечные циклы)
+- Select будет случайно выбирать среди готовых каналов
+- Вы увидите перемешанный вывод от всех трёх горутин
+- Программа работает вечно (используйте Ctrl+C для остановки)
 
 ```go
-// Exercise: Multiple different channels
+// Упражнение: Несколько разных каналов
 
-// We will make use of the 'select' statement
-// Create three different channels "c1,c2,c3" for a goroutine called "name"
-// The go routine will have 2 arguments, first the channel (type string) and then a name (type string)
-// Inside the goroutine (function) will be:
-// 1- An infinite loop:
-// 1.1- The second argument "name" will be ingested into the channel
-// 1.2- Wait for 2 seconds
+// Используем оператор 'select'
+// Создайте три разных канала "c1,c2,c3" для горутины с именем "name"
+// Горутина будет иметь 2 аргумента: сначала канал (тип string), затем имя (тип string)
+// Внутри горутины (функции) будет:
+// 1- Бесконечный цикл:
+// 1.1- Второй аргумент "name" будет записан в канал
+// 1.2- Подождать 2 секунды
 
-// In the main program
-// call 3 times the 'name' goroutine with a different name each
-// make an infinite loop containing the select statement
-// Inside that select, put 3 'case' keywords. In each case print the name for each different channel.
+// В главной программе
+// вызовите горутину 'name' 3 раза с разным именем каждый раз
+// создайте бесконечный цикл, содержащий оператор select
+// Внутри select поместите 3 ключевых слова 'case'. В каждом случае выведите имя для каждого разного канала.
 
 package main
 
@@ -94,7 +94,7 @@ import "fmt"
 import "time"
 
 func name(c chan string, name string){
-	
+
 }
 
 func main () {
@@ -104,32 +104,32 @@ func main () {
 
 	for {
 		select {
-		
+
 		}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Multiple different channels
+// Упражнение: Несколько разных каналов
 
-// We will make use of the 'select' statement
-// Create three different channels "c1,c2,c3" for a goroutine called "name"
-// The go routine will have 2 arguments, first the channel (type string) and then a name (type string)
-// Inside the goroutine (function) will be:
-// 1- An infinite loop:
-// 1.1- The second argument "name" will be ingested into the channel
-// 1.2- Wait for 2 seconds
+// Используем оператор 'select'
+// Создайте три разных канала "c1,c2,c3" для горутины с именем "name"
+// Горутина будет иметь 2 аргумента: сначала канал (тип string), затем имя (тип string)
+// Внутри горутины (функции) будет:
+// 1- Бесконечный цикл:
+// 1.1- Второй аргумент "name" будет записан в канал
+// 1.2- Подождать 2 секунды
 
-// In the main program
-// Create three different channels "c1,c2,c3" of type string
-// call 3 times the 'name' goroutine with a different name each
-// make an infinite loop containing the select statement
-// Inside that select, put 3 'case' keywords. In each case print the name for each different channel.
+// В главной программе
+// Создайте три разных канала "c1,c2,c3" типа string
+// вызовите горутину 'name' 3 раза с разным именем каждый раз
+// создайте бесконечный цикл, содержащий оператор select
+// Внутри select поместите 3 ключевых слова 'case'. В каждом случае выведите имя для каждого разного канала.
 
 package main
 
@@ -162,7 +162,7 @@ func main () {
 			fmt.Println(name3)
 		}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }
 ```
 

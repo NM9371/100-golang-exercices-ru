@@ -1,17 +1,17 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a function that returns 2 integer values
-// There will be 2 arguments (int)
-// The first returned value will be the sum of the arguments, and the second the substraction of them
+// Создайте функцию, возвращающую 2 целочисленных значения
+// Функция принимает 2 аргумента (int)
+// Первое возвращаемое значение — сумма аргументов, второе — их разность
 
 package main
 
 import "fmt"
 
 func operation(x, y int) (int, int) {
-	
+
 }
 
-func main () {
-	
+func main() {
+
 }

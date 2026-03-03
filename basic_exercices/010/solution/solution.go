@@ -1,17 +1,16 @@
-// Exercise: while loop
-// There is no "while" keyword in GOlang!
-// With a for loop, print the numbers from 30 to 50
-
+// Упражнение: Цикл while
+// В GOlang нет ключевого слова "while"!
+// С помощью цикла for выведите числа от 30 до 50
 
 package main
 
 import "fmt"
 
-func main () {
+func main() {
 	init := 30
 	end := 50
-	
-	for (init <= end) {
+
+	for init <= end {
 		fmt.Println(init)
 		init++
 	}

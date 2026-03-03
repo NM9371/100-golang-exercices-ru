@@ -1,12 +1,12 @@
-// Exercise: User input
-// Get a number from the console and check if it's odd
-// You can create another function or do it everything in the main func :) 
+// Упражнение: Пользовательский ввод
+// Получите число из консоли и проверьте, является ли оно нечётным
+// Можно создать отдельную функцию или разместить всё в функции main :)
 
 package main
 
 import "fmt"
 
-func main () {
-	// Here goes your code
+func main() {
+	// Здесь пишите ваш код
 	fmt.Printf("...")
 }

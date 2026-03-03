@@ -1,94 +1,94 @@
-# Exercise: Reference and pointers
+# Упражнение: Ссылки и указатели
 
-## Understanding Variable References and Indirection in Go
+## Понимание ссылок на переменные и косвенной адресации в Go
 
-When you create a variable in Go, the computer doesn't just remember the name — it stores the value of that variable somewhere in the computer's memory. The name of the variable is just a convenient label we use in code, but behind the scenes, Go tracks where in memory the actual data lives.
+Когда вы создаёте переменную в Go, компьютер не просто запоминает её имя — он сохраняет значение этой переменной где-то в памяти компьютера. Имя переменной — это лишь удобная метка, которую мы используем в коде, но за кулисами Go отслеживает, где именно в памяти хранятся реальные данные.
 
-This concept is called [indirection](https://en.wikipedia.org/wiki/Indirection)
+Это понятие называется [косвенной адресацией](https://en.wikipedia.org/wiki/Indirection)
 
-## Memory Address and the & Operator
+## Адрес в памяти и оператор &
 
-Every piece of data stored in memory has an address — think of it like a house address. The `&` operator in Go lets us find out where a variable is stored by giving us its memory address.
+Каждый фрагмент данных, хранящихся в памяти, имеет адрес — представьте его как почтовый адрес дома. Оператор `&` в Go позволяет узнать, где хранится переменная, возвращая её адрес в памяти.
 
 ```go
 package main
 
-import "fmt"
+import “fmt”
 
 func main() {
-  var greeting string = "hello"
+  var greeting string = “hello”
 
-  fmt.Println("The value of greeting:", greeting)
-  // Output: The value of greeting: hello
+  fmt.Println(“The value of greeting:”, greeting)
+  // Вывод: The value of greeting: hello
 
-  fmt.Println("The address of greeting:", &greeting)
-  // Output: The address of greeting: 0xc000010230 (your address will be different)
+  fmt.Println(“The address of greeting:”, &greeting)
+  // Вывод: The address of greeting: 0xc000010230 (ваш адрес будет другим)
 }
 ```
 
-`greeting` stores the string "hello".  
-`&greeting` gives us the memory address where that string is stored.  
+`greeting` хранит строку “hello”.
+`&greeting` возвращает адрес в памяти, где хранится эта строка.
 
-Sometimes, you want to work with the memory address directly and this is where the concept of [pointers](https://en.wikipedia.org/wiki/Pointer_(computer_programming)) comes in. A pointer is just a variable that stores a memory address.
+Иногда нужно работать с адресом в памяти напрямую — и здесь на помощь приходит понятие [указателей](https://en.wikipedia.org/wiki/Pointer_(computer_programming)). Указатель — это просто переменная, хранящая адрес в памяти.
 
-We’ll cover pointers in more detail later, but for now, remember:
+Указатели мы рассмотрим подробнее позже, но пока запомните:
 
-`&x` means “give me the address of x”
+`&x` означает “дай мне адрес x”
 
-This is the foundation of indirection, or accessing a value indirectly through its address
+Это основа косвенной адресации — доступа к значению через его адрес в памяти.
 
-## Getting the user input
+## Получение пользовательского ввода
 
-In order to get a user input we need:
+Чтобы получить пользовательский ввод, нам нужно:
 
-1. A variable to store the input.
-2. A way to tell Go where (in memory) to put the user’s input.
+1. Переменная для хранения введённых данных.
+2. Способ указать Go, куда (в памяти) поместить пользовательский ввод.
 
 ```go
 var address string
-fmt.Println("Please enter your address:")
+fmt.Println(“Please enter your address:”)
 fmt.Scanln(&address)
 ```
 
-This code snippet tells Go: “Store the user's input into the variable `address` by writing to this memory location.”
-You can think of `&name` like giving someone directions to your mailbox — it tells Go where to deliver the value.
+Этот фрагмент кода говорит Go: “Сохрани пользовательский ввод в переменную `address`, записав его по этому адресу в памяти.”
+Можно думать об `&name` как о том, что вы даёте кому-то адрес своего почтового ящика — это указывает Go, куда доставить значение.
 
-You can read more about the Scanln function in: https://pkg.go.dev/fmt#hdr-Scanning
+Подробнее о функции Scanln можно прочитать здесь: https://pkg.go.dev/fmt#hdr-Scanning
 
-Exercise: Using only the fmt package, ask a user for it's name and then for it's surname
+Упражнение: Используя только пакет fmt, запросите у пользователя имя, а затем фамилию
 
-- Store it in 2 variables called "name" and "surname"
-- After user has entered the data, print it to the standard output
+- Сохраните их в 2 переменных с именами “name” и “surname”
+- После ввода данных пользователем выведите их в стандартный вывод
 
 ```go
 package main
 
-import "fmt"
+import “fmt”
 
 func main () {
 	var name, surname string
-	// Here goes your code
-	
+	// Здесь пишите ваш код
+
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
 
-import "fmt"
+import “fmt”
 
 func main () {
 	var name, surname string
-	// Here goes your code
-	fmt.Println("Please enter your name")
+	// Здесь пишите ваш код
+	fmt.Println(“Please enter your name”)
 	fmt.Scanln(&name)
-	fmt.Println("Please enter your surname")
+	fmt.Println(“Please enter your surname”)
 	fmt.Scanln(&surname)
 
-	fmt.Printf("Your name is: " + name + " " + surname)
+	fmt.Printf(“Your name is: “ + name + “ “ + surname)
 }
 
 ```

@@ -1,8 +1,8 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a function that returns 2 integer values
-// There will be 2 arguments (int)
-// The first returned value will be the sum of the arguments, and the second the substraction of them
+// Создайте функцию, возвращающую 2 целочисленных значения
+// Функция принимает 2 аргумента (int)
+// Первое возвращаемое значение — сумма аргументов, второе — их разность
 
 package main
 
@@ -11,12 +11,12 @@ import "fmt"
 func operation(x, y int) (int, int) {
 	var sum, substraction int
 	sum = x + y
-	substraction = x - y 
+	substraction = x - y
 	return sum, substraction
 }
 
-func main () {
-	// Your code goes here
-	sum, subs := operation(10,5)
+func main() {
+	// Ваш код здесь
+	sum, subs := operation(10, 5)
 	fmt.Println(sum, subs)
 }

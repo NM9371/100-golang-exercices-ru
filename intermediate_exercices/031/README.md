@@ -1,52 +1,52 @@
-# Exercise: Functions IV
+# Упражнение: Функции IV
 
-Recursive functions are functions that call themselves.
-An example of recursivity are fractals, or the "Linux" word meaning "Linux Is Not UniX".
+Рекурсивные функции — это функции, которые вызывают сами себя.
+Пример рекурсии — фракталы или слово "Linux", означающее "Linux Is Not UniX".
 
-A recursive function will always find a base case, which is the condition that will stop the function.
+Рекурсивная функция всегда имеет базовый случай — условие, при котором рекурсия останавливается.
 
-The function calls itself, creating a chain of calls. Each call solves a smaller part of the problem. When the base case is reached, the function starts returning the results back up the chain of calls, until the original problem is solved.
+Функция вызывает саму себя, создавая цепочку вызовов. Каждый вызов решает меньшую часть задачи. Когда достигается базовый случай, функция начинает возвращать результаты обратно по цепочке вызовов до тех пор, пока исходная задача не будет решена.
 
-To put an example, the factorial of a number, is the number multiplied by n-1 until it reaches the base case, which always is `factorial(0) = 1`
+Например, факториал числа — это число, умноженное на n-1 до достижения базового случая: `factorial(0) = 1`
 
 ```go
 func factorial(n int) int {
-  if n == 0 { // base case
+  if n == 0 { // базовый случай
     return 1
   } else {
-    return n * factorial(n-1) // function calling itself with the argument decreasing.
+    return n * factorial(n-1) // функция вызывает себя с уменьшающимся аргументом.
   }
 }
 ```
 
-As we can see, the function calls itself but with the argument decreasing at every function call. This will drive our function argument closer to the base case after each call. The call stack would look like this:
+Как видно, функция вызывает себя, но каждый раз с уменьшенным аргументом. Это приближает аргумент к базовому случаю при каждом вызове. Стек вызовов выглядит так:
 
-![recursive case reaching base case](recursive.png)
+![рекурсивный случай, достигающий базового](recursive.png)
 
-Exercise:
+Упражнение:
 
-Create a recursive function that returns the sequence of fibonacci up until the nth number
+Создайте рекурсивную функцию, возвращающую последовательность Фибоначчи до n-го числа
 
 ```go
 package main
 
 import "fmt"
 
-// Complete the function signature
+// Дополните сигнатуру функции
 func fibonacci() int {
-  // Your code goes here
+  // Ваш код здесь
 
 }
 
 func main () {
-  // Your code goes here
-  
+  // Ваш код здесь
+
 }
 
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main
@@ -54,14 +54,14 @@ package main
 import "fmt"
 
 func fibonacci(x int) int{
-  if (x <= 1) { // base case
+  if (x <= 1) { // базовый случай
     return x
   }
-  return fibonacci(x-1) + fibonacci(x-2) // recursive function
+  return fibonacci(x-1) + fibonacci(x-2) // рекурсивная функция
 }
 
 func main () {
-  // Your code goes here
+  // Ваш код здесь
   fmt.Println(fibonacci(9))
 }
 ```

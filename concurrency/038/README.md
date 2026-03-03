@@ -1,81 +1,81 @@
-# Exercise 38: Channel Directions - Send-Only Channels
+# Упражнение 38: Направление каналов — каналы только для записи
 
-## Send-Only Channels
+## Каналы только для записи
 
-Continuing with channel directions, this exercise focuses on **send-only channels** - channels that can only be used to send values.
+Продолжая тему направления каналов, это упражнение посвящено **каналам только для отправки** — каналам, которые можно использовать исключительно для отправки значений.
 
-## Send-Only Channel Syntax
+## Синтаксис канала только для записи
 
-A send-only channel uses the syntax `chan<- type`:
+Канал только для отправки использует синтаксис `chan<- type`:
 
 ```go
-func sender(ch chan<- string) {  // chan<- = send-only
-    ch <- "hello"     // ✓ OK - can send
-    // value := <-ch  // ✗ ERROR - cannot receive
+func sender(ch chan<- string) {  // chan<- = только для записи
+    ch <- "hello"     // ✓ OK — можно отправлять
+    // value := <-ch  // ✗ ОШИБКА — нельзя получать
 }
 ```
 
-## Memory Aid for Direction
+## Подсказка по направлению
 
-Think of the arrow as showing data flow:
-- `chan<- string`: Data flows **into** the channel (send-only)
-- `<-chan string`: Data flows **out of** the channel (receive-only)
-- `chan string`: Data flows **both ways** (bidirectional)
+Думайте о стрелке как о потоке данных:
+- `chan<- string`: данные текут **в** канал (только для записи)
+- `<-chan string`: данные текут **из** канала (только для чтения)
+- `chan string`: данные текут **в обе стороны** (двунаправленный)
 
-## Common Pattern: Producer-Consumer
+## Распространённый паттерн: производитель-потребитель
 
-Send-only and receive-only channels are often used together in producer-consumer patterns:
+Каналы только для отправки и только для чтения часто используются вместе в паттернах производитель-потребитель:
 
 ```go
-func producer(out chan<- string) {  // Can only send
+func producer(out chan<- string) {  // Может только отправлять
     out <- "data"
 }
 
-func consumer(in <-chan string) {   // Can only receive
+func consumer(in <-chan string) {   // Может только получать
     data := <-in
     fmt.Println(data)
 }
 
 func main() {
     ch := make(chan string)
-    go producer(ch)  // Converts to send-only
-    go consumer(ch)  // Converts to receive-only
+    go producer(ch)  // Преобразуется в только для отправки
+    go consumer(ch)  // Преобразуется в только для чтения
 }
 ```
 
-## Why Restrict to Send-Only?
+## Зачем ограничивать только отправкой?
 
-1. **Prevents mistakes**: Function cannot accidentally try to receive
-2. **Clear responsibility**: This function is clearly a "producer"
-3. **API design**: Makes function contracts explicit
-4. **Compile-time safety**: Errors caught early, not at runtime
+1. **Предотвращает ошибки**: функция не может случайно попытаться получить данные
+2. **Чёткая ответственность**: эта функция явно является "производителем"
+3. **Проектирование API**: делает контракты функций явными
+4. **Безопасность на этапе компиляции**: ошибки обнаруживаются на раннем этапе, а не во время выполнения
 
-## Your Task
+## Задание
 
-Create a function called `send` that:
-1. Takes a send-only channel as its first and only argument
-2. Can only send data to the channel
-3. Cannot receive data from the channel (compiler will prevent this)
+Создайте функцию с именем `send`, которая:
+1. Принимает канал только для отправки в качестве первого и единственного аргумента
+2. Может только отправлять данные в канал
+3. Не может получать данные из канала (компилятор не позволит)
 
-The channel is already created for you in `main()`. You need to:
-- Implement the `send` function with proper channel direction
-- Use the function to send data to the channel
-- Receive the data in main to see it worked
+Канал уже создан для вас в `main()`. Вам нужно:
+- Реализовать функцию `send` с правильным направлением канала
+- Использовать функцию для отправки данных в канал
+- Получить данные в main, чтобы убедиться, что это сработало
 
-## Expected Behavior
+## Ожидаемое поведение
 
-The program should demonstrate that the `send` function can only send to the channel, not receive from it.
+Программа должна продемонстрировать, что функция `send` может только отправлять в канал, а не получать из него.
 
-## Hint
+## Подсказка
 
-The channel direction for send-only is `chan<- string`. Remember the arrow points **into** the channel for sending.
+Направление канала только для записи — `chan<- string`. Помните, что стрелка указывает **в** канал для отправки.
 
 ```go
-// Exercise: Channels directions (only send/tx)
+// Упражнение: Направление каналов (только запись/tx)
 
-// Make a goroutine with a channel for only send data.
-// The function should be called "send" and the send-only channel should be it's 1st and only argument
-// Receive data from that channel is prohibited / will cause compiler errors
+// Создайте горутину с каналом только для отправки данных.
+// Функция должна называться "send", а канал только для отправки должен быть её 1-м и единственным аргументом
+// Получение данных из этого канала запрещено / вызовет ошибку компиляции
 
 package main
 
@@ -83,19 +83,19 @@ import "fmt"
 
 func main () {
 	var c chan string = make(chan string, 1)
-	
+
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels directions (only send/tx)
+// Упражнение: Направление каналов (только запись/tx)
 
-// Make a goroutine with a channel for only send data.
-// The function should be called "send" and the send-only channel should be it's 1st and only argument
-// Receive data from that channel is prohibited / will cause compiler errors
+// Создайте горутину с каналом только для отправки данных.
+// Функция должна называться "send", а канал только для отправки должен быть её 1-м и единственным аргументом
+// Получение данных из этого канала запрещено / вызовет ошибку компиляции
 
 package main
 

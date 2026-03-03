@@ -1,14 +1,14 @@
-// Exercise: Channels directions (only send/tx)
+// Упражнение: Направление каналов (только запись/tx)
 
-// Make a goroutine with a channel for only send data.
-// The function should be called "send" and the send-only channel should be it's 1st and only argument
-// Receive data from that channel is prohibited / will cause compiler errors
+// Создайте горутину с каналом только для отправки данных.
+// Функция должна называться "send", а канал только для отправки должен быть её 1-м и единственным аргументом
+// Получение данных из этого канала запрещено / вызовет ошибку компиляции
 
 package main
 
 import "fmt"
 
-func main () {
+func main() {
 	var c chan string = make(chan string, 1)
-	
+
 }

@@ -1,74 +1,74 @@
-# Exercise 37: Channel Directions - Receive-Only Channels
+# Упражнение 37: Направление каналов — каналы только для чтения
 
-## What are Channel Directions?
+## Что такое направления каналов?
 
-By default, channels are **bidirectional** - you can both send and receive on them. But Go allows you to restrict channels to only send or only receive, providing better type safety and clearer code intent.
+По умолчанию каналы **двунаправленные** — можно как отправлять, так и получать из них. Но Go позволяет ограничить каналы только отправкой или только получением, обеспечивая лучшую типобезопасность и более чёткое намерение кода.
 
-## Receive-Only Channels
+## Каналы только для чтения
 
-A receive-only channel can only be used to receive values:
+Канал только для чтения может использоваться лишь для получения значений:
 
-**Declaration syntax:**
+**Синтаксис объявления:**
 ```go
-func myFunction(ch <-chan string) {  // <-chan = receive-only
-    value := <-ch  // ✓ OK - can receive
-    // ch <- "hello"  // ✗ ERROR - cannot send
+func myFunction(ch <-chan string) {  // <-chan = только для чтения
+    value := <-ch  // ✓ OK — можно получать
+    // ch <- "hello"  // ✗ ОШИБКА — нельзя отправлять
 }
 ```
 
-## Why Use Directional Channels?
+## Зачем использовать направленные каналы?
 
-1. **Type Safety**: Prevents accidental sends/receives
-2. **Clear Intent**: Function signature shows exactly what the function does
-3. **Better APIs**: Makes function contracts explicit
-4. **Compiler Help**: Catches misuse at compile time
+1. **Типобезопасность**: предотвращает случайные отправки/получения
+2. **Явное намерение**: сигнатура функции чётко показывает, что она делает
+3. **Лучшие API**: делает контракты функций явными
+4. **Помощь компилятора**: ловит ошибки во время компиляции
 
-## Channel Direction Syntax
+## Синтаксис направления каналов
 
-- **Bidirectional**: `chan string` (default)
-- **Send-only**: `chan<- string` (arrow points into chan)
-- **Receive-only**: `<-chan string` (arrow points out of chan)
+- **Двунаправленный**: `chan string` (по умолчанию)
+- **Только для отправки**: `chan<- string` (стрелка указывает в канал)
+- **Только для чтения**: `<-chan string` (стрелка указывает из канала)
 
-## Automatic Conversion
+## Автоматическое преобразование
 
-Go automatically converts bidirectional channels to directional channels when needed:
+Go автоматически преобразует двунаправленные каналы в направленные по мере необходимости:
 
 ```go
-ch := make(chan string)        // Bidirectional
-go sender(ch)                  // Converts to send-only automatically
-go receiver(ch)                // Converts to receive-only automatically
+ch := make(chan string)        // Двунаправленный
+go sender(ch)                  // Автоматически преобразуется в только для отправки
+go receiver(ch)                // Автоматически преобразуется в только для чтения
 
-func sender(out chan<- string) { ... }    // Send-only parameter
-func receiver(in <-chan string) { ... }   // Receive-only parameter
+func sender(out chan<- string) { ... }    // Параметр только для отправки
+func receiver(in <-chan string) { ... }   // Параметр только для чтения
 ```
 
-## Your Task
+## Задание
 
-Create a function called `receive` that:
-1. Takes a receive-only channel as its first and only argument
-2. Cannot send data to the channel (compiler will prevent this)
-3. Can only receive data from the channel
+Создайте функцию с именем `receive`, которая:
+1. Принимает канал только для чтения в качестве первого и единственного аргумента
+2. Не может отправлять данные в канал (компилятор не позволит)
+3. Может только получать данные из канала
 
-You'll also need to:
-- Create the channel in main
-- Send some data to the channel
-- Start the receive goroutine
+Также нужно:
+- Создать канал в main
+- Отправить в него данные
+- Запустить горутину receive
 
-## Expected Behavior
+## Ожидаемое поведение
 
-The program should demonstrate that the `receive` function can only receive from the channel, not send to it.
+Программа должна продемонстрировать, что функция `receive` может только получать из канала, а не отправлять.
 
-## Hint
+## Подсказка
 
-Pay attention to the arrow direction in the channel type: `<-chan string` means "receive-only channel of strings".
+Обратите внимание на направление стрелки в типе канала: `<-chan string` означает "канал строк только для чтения".
 
 ```go
-// Exercise: Channels directions (only read/rx)
+// Упражнение: Направление каналов (только чтение/rx)
 
-// Make a goroutine with a channel for only receive data.
-// The function should be called "receive" and the receive-only channel should be it's 1st and only argument
-// Sending data from that channel is prohibited / will cause compiler errors
-// Feed some string into that channel.
+// Создайте горутину с каналом только для получения данных.
+// Функция должна называться "receive", а канал только для чтения должен быть её 1-м и единственным аргументом
+// Отправка данных в этот канал запрещена / вызовет ошибку компиляции
+// Подайте в этот канал какую-нибудь строку.
 
 package main
 
@@ -80,15 +80,15 @@ func main () {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels directions (only read/rx)
+// Упражнение: Направление каналов (только чтение/rx)
 
-// Make a goroutine with a channel for only receive data.
-// The function should be called "receive" and the receive-only channel should be it's 1st and only argument
-// Sending data from that channel is prohibited / will cause compiler errors
-// Feed some string into that channel.
+// Создайте горутину с каналом только для получения данных.
+// Функция должна называться "receive", а канал только для чтения должен быть её 1-м и единственным аргументом
+// Отправка данных в этот канал запрещена / вызовет ошибку компиляции
+// Подайте в этот канал какую-нибудь строку.
 
 
 package main

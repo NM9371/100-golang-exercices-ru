@@ -1,31 +1,31 @@
-# Exercise: Functions inception
+# Упражнение: Вложенные функции
 
-A function is a block of statements that can be used repeatedly in a program.
+Функция — это блок операторов, который можно многократно использовать в программе.
 
-Functions are very convenient and widely used in programming, making it easier to read, understand, and maintain. They also promote code reuse [DRY principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+Функции очень удобны и широко применяются в программировании — они облегчают чтение, понимание и сопровождение кода. Они также способствуют повторному использованию кода [принцип DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 
-## The anatomy of a function
+## Анатомия функции
 
 ```go
-func functionName(param1 type1, param2 type2) returnType { // This is called the function signature
-    // Inside the braces we have the function body, where our function logic resides.
+func functionName(param1 type1, param2 type2) returnType { // Это называется сигнатурой функции
+    // Внутри фигурных скобок находится тело функции с логикой.
 }
 ```
 
-Example:
+Пример:
 
 ```go
-func subtract(x,y int) int { // function signature
-    return x - y // function body, will return to the function caller the operation of substracting x - y.
+func subtract(x,y int) int { // сигнатура функции
+    return x - y // тело функции, возвращает вызывающей стороне результат вычитания x - y.
 }
 
 func main() {
-    result := subtract(5,4) // the function is called and it's return value assigned to the `result` variable
-    fmt.Println(result) // the result will be 1
+    result := subtract(5,4) // вызов функции, её возвращаемое значение присваивается переменной `result`
+    fmt.Println(result) // результат будет 1
 }
 ```
 
-Create a function that sums 2 numbers, then call that function from another function that sums another number.
+Создайте функцию, складывающую 2 числа, а затем вызовите её из другой функции, которая суммирует ещё одно число.
 
 ```go
 package main
@@ -33,22 +33,22 @@ package main
 import "fmt"
 
 func sum() int {
-    
+
 }
 
 func secondsum() int {
-    
+
 }
 
 func main () {
-  // Your code goes here
+  // Ваш код здесь
 
 }
 
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main
@@ -60,11 +60,11 @@ func sum(x int, y int) int {
 }
 
 func secondsum(x, y, z int) int {
-    return sum(x,y) + z 
+    return sum(x,y) + z
 }
 
 func main () {
-    // Your code goes here
+    // Ваш код здесь
     var result int
     result = secondsum(2,3,5)
 

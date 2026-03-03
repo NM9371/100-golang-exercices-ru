@@ -1,10 +1,10 @@
-# Exercise: Arrays III
+# Упражнение: Массивы III
 
-Arrays are FIXED in size, meaning that they cannot grow bigger than it's original value. This also implies that operations with arrays should be done carefully as we may hit out of bounds errors. Dynamically sized arrays are called slices, which we will learn from them soon.
+Массивы имеют ФИКСИРОВАННЫЙ размер, то есть они не могут стать больше своего исходного значения. Это также означает, что операции с массивами необходимо выполнять осторожно, так как можно получить ошибку выхода за пределы массива. Массивы с динамическим размером называются срезами (slices) — их мы изучим позже.
 
-There is no need to initialize all the elements from an array, but remember that the remaining elements will contain it's zero value
+Необязательно инициализировать все элементы массива, но помните, что оставшиеся элементы будут содержать нулевое значение своего типа.
 
-Exercise: Create an array of 5 strings, and initialize it's 2 first values with some random strings.
+Упражнение: Создайте массив из 5 строк и инициализируйте первые 2 элемента произвольными строками.
 
 ```go
 package main
@@ -12,13 +12,13 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
   fmt.Printf("...")
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -28,7 +28,7 @@ import "fmt"
 func main () {
   var arr = [5]string{"thomas","phillip"}
 
-  // Print the array
+  // Выводим массив
   for i := 0; i < len(arr); i++ {
     fmt.Printf("Element number %d: %v \n", i, arr[i])
   }

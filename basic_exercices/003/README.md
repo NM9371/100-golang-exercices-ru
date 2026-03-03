@@ -1,30 +1,30 @@
-# Exercise: Variables
+# Упражнение: Переменные
 
-## Variables in golang
+## Переменные в golang
 
-A variable is an object that stores a value.
+Переменная — это объект, хранящий значение.
 
-For example, the variable `name` can store the "Elvis" name.
-The variable `number` can store 1, 20 or 500.
-The variable `isHuman` can store `true` or `false`.
+Например, переменная `name` может хранить имя "Elvis".
+Переменная `number` может хранить 1, 20 или 500.
+Переменная `isHuman` может хранить `true` или `false`.
 
-Variables in golang are statically-typed, meaning that once a variable type is defined, it can only store data of that type.
+Переменные в golang имеют статическую типизацию, то есть после того, как тип переменной определён, она может хранить только данные этого типа.
 
-The variable `name` of type `string` contains a string.
-The variable `number` of type `int` will contain an integer number.
-The variable `isHuman` of type `bool` will contain a boolean.
-And so on...
+Переменная `name` типа `string` содержит строку.
+Переменная `number` типа `int` будет содержать целое число.
+Переменная `isHuman` типа `bool` будет содержать булево значение.
+И так далее...
 
-Variables are stored in the memory of the computer, but we will talk later about how they are stored or referenced.
+Переменные хранятся в памяти компьютера, но о том, как они хранятся и как на них ссылаться, мы поговорим позже.
 
-## The shorthand :=
+## Сокращённое объявление :=
 
-The `:=` syntax is shorthand for declaring and initializing a variable, e.g. for `var f string = "apple"` is equivalent to `f := "apple"`.
-This syntax is only available inside functions, you can read more about it [here](https://go.dev/ref/spec#Short_variable_declarations).
+Синтаксис `:=` является сокращённым способом объявления и инициализации переменной, например, запись `var f string = "apple"` эквивалентна `f := "apple"`.
+Этот синтаксис доступен только внутри функций; подробнее можно прочитать [здесь](https://go.dev/ref/spec#Short_variable_declarations).
 
-Exercise: Create a program that puts the `Hello World!` string inside a string variable called `helloWorld`
+Упражнение: Создайте программу, которая помещает строку `Hello World!` в строковую переменную с именем `helloWorld`
 
-Tip: String values are always wrapped in double-quotes `"hello, I am a string!"`
+Подсказка: Строковые значения всегда заключаются в двойные кавычки `"привет, я строка!"`
 
 ```go
 package main
@@ -32,12 +32,12 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -45,14 +45,14 @@ package main
 import "fmt"
 
 func main() {
-  // Creating new variable called helloWorld
+  // Создаём новую переменную с именем helloWorld
   var helloWorld string
   helloWorld = "Hello World!"
-  // Print the variable
+  // Выводим переменную
   fmt.Println(helloWorld)
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go
 ```
 

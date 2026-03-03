@@ -1,58 +1,58 @@
-# Exercise: Arrays
+# Упражнение: Массивы
 
-## What is an array
+## Что такое массив
 
-An array fixed-size collection of elements of the same type.
+Массив — это коллекция элементов одного типа фиксированного размера.
 
-Arrays are always bound to a single type (`int`,`float64`,`bool`, `string`, etc.) meaning that all the elements inside an array are of the same type.
+Массивы всегда привязаны к одному типу (`int`, `float64`, `bool`, `string` и т. д.), то есть все элементы внутри массива имеют одинаковый тип.
 
-Arrays are FIXED in size, they cannot grow bigger than they are.
+Массивы имеют ФИКСИРОВАННЫЙ размер и не могут увеличиваться.
 
-## Working with arrays
+## Работа с массивами
 
-The syntax to declare an array is `[<size>]<type>`
+Синтаксис объявления массива: `[<размер>]<тип>`
 
-- If we want to declare an array of 5 integers, we will do `var arrayOfInts = [5]int
-- If we want to declare an array of 4 booleans, we will do `var arrayOfBools = [4]bool
-- You know how it goes!
-  
-We can create arrays of almost everything, numbers, booleans, even arrays of arrays (matrices)!
-In this exercise we are going to learn how to initialize an array, that is, to populate it's initial values.
+- Чтобы объявить массив из 5 целых чисел: `var arrayOfInts = [5]int`
+- Чтобы объявить массив из 4 булевых значений: `var arrayOfBools = [4]bool`
+- И так далее!
 
-## Zero-values
+Можно создавать массивы почти из чего угодно: чисел, булевых значений, и даже массивов массивов (матриц)!
+В этом упражнении мы научимся инициализировать массив, то есть задавать его начальные значения.
 
-In golang, when we declare a variable and do not make any explicit assignment to it (we don't store any value in it) by default it takes the zero or null value of it's type.
+## Нулевые значения
 
-The zero value is:
+В golang, когда мы объявляем переменную и не присваиваем ей значение явно, по умолчанию она принимает нулевое или пустое значение своего типа.
 
-- 0 for numeric types,
-- false for the boolean type, and
-- "" (the empty string) for strings.
+Нулевое значение:
 
-Say we declare a 4 integers array `var fourIntArray [4]int`, as the array type is of `int` and we have not assigned any value, the array will contain a `0` in every element of the array.
+- 0 для числовых типов,
+- false для булевого типа,
+- "" (пустая строка) для строк.
+
+Если мы объявим массив из 4 целых чисел `var fourIntArray [4]int`, то поскольку тип массива — `int` и мы не присвоили никакого значения, массив будет содержать `0` в каждом элементе.
 
 ![array_example](array.png)
 
-There are multiple ways of populating an array, but if we know which values are going to be in the array we can initialize those values in the variable declaration by adding the values between braces `{}`.
+Существует несколько способов заполнить массив, но если мы знаем, какие значения будут в массиве, можно инициализировать их при объявлении переменной, добавив значения в фигурных скобках `{}`.
 
-Example:
+Пример:
 
 ```go
 var newArray = [4]int{3,2,1,0}
 ```
 
-This will initialize an array of 4 integers and assign them the values between the curly braces.
-You can access the elements of an array thanks to their index value.
+Это создаст массив из 4 целых чисел и присвоит им значения в фигурных скобках.
+Доступ к элементам массива осуществляется по индексу.
 
 ```go
-// newArray anatomy:
-Value: 3 - 2 - 1 - 0
-Index: 0 - 1 - 2 - 3
+// Анатомия newArray:
+Значение: 3 - 2 - 1 - 0
+Индекс:   0 - 1 - 2 - 3
 ```
 
-For example, to access the second position in the array, you would do so with `newArray[1]`, giving you the value of `2`. But we will practice this in the next exercise. For now...
+Например, чтобы получить доступ ко второму элементу массива, используйте `newArray[1]` — это вернёт значение `2`. Но практиковаться в этом мы будем в следующем упражнении. А сейчас...
 
-Exercise: Create an array of 10 "int8" values, and fill those values from 0 to 9
+Упражнение: Создайте массив из 10 значений типа "int8" и заполните его значениями от 0 до 9
 
 ```go
 package main
@@ -60,13 +60,13 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
   fmt.Printf("...")
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -74,11 +74,11 @@ package main
 import "fmt"
 
 func main () {
-  // common initialization when the values are deterministic
+  // Стандартная инициализация, когда значения заранее известны
   var init_arr = [10]int{0,1,2,3,4,5,6,7,8,9}
 
   /*
-  Simple but unefficient solution
+  Простое, но неэффективное решение:
   arr[0] = 0
   arr[1] = 1
   arr[2] = 2
@@ -91,7 +91,7 @@ func main () {
   arr[9] = 9
   */
 
-  // this would also work!
+  // Это тоже сработает!
   //var init_arr = [10]int{1:9}
 }
 ```

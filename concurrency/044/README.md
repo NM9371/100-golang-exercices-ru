@@ -1,57 +1,57 @@
-# Exercise 44: Range Over Unbuffered Channels
+# Упражнение 44: Range по небуферизованным каналам
 
-## Range with Unbuffered Channels
+## Range с небуферизованными каналами
 
-This exercise explores using `range` with unbuffered channels and goroutines producing data in real-time. Unlike buffered channels, unbuffered channels require a goroutine to be actively sending data.
+Это упражнение исследует использование `range` с небуферизованными каналами и горутинами, производящими данные в реальном времени. В отличие от буферизованных каналов, небуферизованные каналы требуют, чтобы горутина активно отправляла данные.
 
-## Unbuffered vs Buffered Channels
+## Буферизованные и небуферизованные каналы
 
-**Buffered channels** (previous exercise):
-- Can hold multiple values before blocking
-- Must be closed before using `range`
-- Values are stored in the buffer
+**Буферизованные каналы** (предыдущее упражнение):
+- Могут хранить несколько значений до блокировки
+- Необходимо закрывать перед использованием `range`
+- Значения хранятся в буфере
 
-**Unbuffered channels** (this exercise):
-- Block on send until receiver is ready
-- Block on receive until sender is ready
-- Perfect for real-time data streaming
-- Don't need to be closed for `range` (but goroutine must keep sending)
+**Небуферизованные каналы** (это упражнение):
+- Блокируются при отправке до готовности получателя
+- Блокируются при получении до готовности отправителя
+- Идеально для потоковой передачи данных в реальном времени
+- Не нужно закрывать для `range` (но горутина должна продолжать отправку)
 
-## Real-Time Data Streaming
+## Потоковая передача данных в реальном времени
 
-When using `range` with unbuffered channels:
-- The goroutine continuously produces data
-- `range` blocks waiting for each new value
-- Data flows in real-time as it's produced
-- The loop continues until the channel is closed or the goroutine stops
+При использовании `range` с небуферизованными каналами:
+- Горутина непрерывно производит данные
+- `range` блокируется в ожидании каждого нового значения
+- Данные передаются в реальном времени по мере производства
+- Цикл продолжается до закрытия канала или остановки горутины
 
-## Key Concepts
+## Ключевые концепции
 
-1. **Unbuffered channel**: Synchronous communication, no buffer
-2. **Goroutine producer**: Continuously sends data in a loop
-3. **Range consumer**: Receives data as it's produced
-4. **Real-time processing**: Data flows immediately without buffering
+1. **Небуферизованный канал**: синхронная связь, нет буфера
+2. **Горутина-производитель**: непрерывно отправляет данные в цикле
+3. **Потребитель range**: получает данные по мере их производства
+4. **Обработка в реальном времени**: данные передаются немедленно без буферизации
 
-## Your Task
+## Задание
 
-Create a goroutine that:
-1. Has an infinite loop that sends the current second to a channel
-2. Waits one second between each send
-3. Use `range` in main to receive and print each second value
-4. Observe how data flows in real-time from the goroutine
+Создайте горутину, которая:
+1. Имеет бесконечный цикл, отправляющий текущую секунду в канал
+2. Ждёт одну секунду между каждой отправкой
+3. Используйте `range` в main для получения и вывода каждого значения секунды
+4. Наблюдайте, как данные передаются в реальном времени от горутины
 
-## Expected Behavior
+## Ожидаемое поведение
 
-You should see the current second value printed continuously, updating every second. This demonstrates real-time data streaming with unbuffered channels.
+Вы должны видеть текущее значение секунды, выводимое непрерывно и обновляемое каждую секунду. Это демонстрирует потоковую передачу данных в реальном времени с небуферизованными каналами.
 
 ```go
-// Exercise: Channels - Range (unbuffered)
+// Упражнение: Каналы — range (небуферизованный)
 
-// In this exercise we will use the range keyword to iterate over a UNbuffered (sync) channel.
-// Create a unbuffered channel (type int)
-// Create a goroutine that:
-// Has an infinite loop -> prints the current second and waits for a second
-// Use the range iterator in the main function to see each second
+// В этом упражнении мы будем использовать ключевое слово range для итерации по НЕбуферизованному (синхронному) каналу.
+// Создайте небуферизованный канал (тип int)
+// Создайте горутину, которая:
+// Имеет бесконечный цикл -> выводит текущую секунду и ждёт одну секунду
+// Используйте итератор range в функции main, чтобы видеть каждую секунду
 
 package main
 
@@ -59,28 +59,28 @@ import "fmt"
 import "time"
 
 func second(c chan int){
-	
+
 }
 
 func main () {
 	var c chan int = make(chan int)
 	go second(c)
-	
-	
+
+
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels - Range (unbuffered)
+// Упражнение: Каналы — range (небуферизованный)
 
-// In this exercise we will use the range keyword to iterate over a UNbuffered (sync) channel.
-// Create a unbuffered channel (type int)
-// Create a goroutine that:
-// Has an infinite loop -> prints the current second and waits for a second
-// Use the range iterator in the main function to see each second
+// В этом упражнении мы будем использовать ключевое слово range для итерации по НЕбуферизованному (синхронному) каналу.
+// Создайте небуферизованный канал (тип int)
+// Создайте горутину, которая:
+// Имеет бесконечный цикл -> выводит текущую секунду и ждёт одну секунду
+// Используйте итератор range в функции main, чтобы видеть каждую секунду
 
 package main
 
@@ -98,7 +98,7 @@ func main () {
 	var c chan int = make(chan int)
 
 	go second(c)
-	
+
 	for element := range c {
 		fmt.Println(element)
 	}

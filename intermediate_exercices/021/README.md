@@ -1,31 +1,31 @@
-# Exercise: MAP
+# Упражнение: Словари (MAP)
 
-A map is a key-value store where each key is associated with a single value.
-We could imagine a dictionary, where the word `bee` holds the index for it's definition "a stinging winged insect which collects nectar and pollen, produces wax and honey, and lives in large communities."
+Словарь (map) — это хранилище данных в формате ключ-значение, где каждый ключ связан с одним значением.
+Можно представить словарь как обычный словарь, где слово `bee` содержит ссылку на его определение: "жалящее крылатое насекомое, которое собирает нектар и пыльцу, производит воск и мёд и живёт большими колониями."
 
-Like in the dictionary we only have one entry for `bee`, maps do not allow duplicates.
+Так же как в обычном словаре есть только одна запись для слова `bee`, в map дубликаты недопустимы.
 
-A map is a very important data structure that we often see in software engineering, as usually provide very nice performance when accessing or storing data, even for huge data sets.
+Словарь — очень важная структура данных в разработке программного обеспечения, обеспечивающая отличную производительность при доступе или сохранении данных даже в больших наборах данных.
 
-## Syntax for creating maps
+## Синтаксис создания словарей
 
-In golang, maps are created with
+В Go словари создаются следующим образом:
 
 ```go
 var a = map[KeyType]ValueType{key1:value1, key2:value2,...}
 
-// examples:
+// Примеры:
 var a = map[string]string{"brand": "Ford", "model": "Mustang", "year": "1964"}
 b := map[string]int{"Oslo": 1, "Bergen": 2, "Trondheim": 3, "Stavanger": 4}
 ```
 
-Exercise: Create a map of ints to strings
+Упражнение: Создайте словарь с целочисленными ключами и строковыми значениями
 
-`1` should map to `A`  
-`2` should map to `B`  
-`3` should map to `C`  
+`1` должен соответствовать `A`
+`2` должен соответствовать `B`
+`3` должен соответствовать `C`
 
-Reference: [https://gobyexample.com/maps](https://gobyexample.com/maps)
+Ссылка: [https://gobyexample.com/maps](https://gobyexample.com/maps)
 
 ```go
 package main
@@ -33,12 +33,12 @@ package main
 import "fmt"
 
 func main () {
-  // Your code goes here
+  // Ваш код здесь
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -46,10 +46,10 @@ package main
 import "fmt"
 
 func main () {
-  // Your code goes here
+  // Ваш код здесь
 
   mymap := map[int]string{1: "A", 2: "B", 3: "C"}
-  // Clumsier code (but works)
+  // Более многословный вариант (тоже работает)
   // amap := make(map[int32]string)
   // amap[1] = "A"
   // amap[2] = "B"

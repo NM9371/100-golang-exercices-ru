@@ -1,15 +1,15 @@
-# Exercise: Rename a file
+# Упражнение: Переименование файла
 
-This exercise is a simple one, you deserve it!
-the "os" package also has a function to [rename](https://pkg.go.dev/os#Rename) a file (as long as you have permissions for it, and that the file exists)
+Это простое упражнение — вы заслужили!
+Пакет "os" также содержит функцию для [переименования](https://pkg.go.dev/os#Rename) файла (при наличии прав доступа и существования файла).
 
-The `os.Rename` function signature:
+Сигнатура функции `os.Rename`:
 
 ```go
 func Rename(oldpath, newpath string) error
 ```
 
-Exercise: Rename an existing file from an old name to a new name.
+Упражнение: Переименуйте существующий файл — смените старое имя на новое.
 
 ```go
 package main
@@ -19,13 +19,13 @@ import "os"
 
 func main () {
   var old_name, new_name string
-  // Here goes your code
+  // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main
@@ -35,8 +35,8 @@ import "os"
 
 func main () {
   var src, dest string
-  // Here goes your code
-  
+  // Ваш код здесь
+
   src = "name1.txt"
   dest = "name2.txt"
 

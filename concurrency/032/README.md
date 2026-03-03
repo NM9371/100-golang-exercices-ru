@@ -1,81 +1,81 @@
-# Exercise 32: Introduction to Goroutines
+# Упражнение 32: Введение в горутины
 
-## What are Goroutines?
+## Что такое горутины?
 
-Goroutines are lightweight threads managed by the Go runtime. They are one of Go's most powerful features for concurrent programming. Unlike operating system threads, goroutines are much more lightweight - you can create thousands or millions of them with minimal overhead.
+Горутины — это лёгкие потоки, управляемые средой выполнения Go. Это одна из мощнейших возможностей Go для конкурентного программирования. В отличие от потоков операционной системы, горутины значительно легче — можно создать тысячи или миллионы горутин с минимальными накладными расходами.
 
-## Key Characteristics of Goroutines
+## Ключевые характеристики горутин
 
-- **Lightweight**: Start with small stack (around 2KB) that grows as needed
-- **Managed**: Go runtime handles scheduling onto OS threads
-- **Concurrent**: Multiple goroutines can run simultaneously
-- **Easy to create**: Just use the `go` keyword before a function call
+- **Лёгкие**: начинают с небольшого стека (~2 КБ), который растёт по мере необходимости
+- **Управляемые**: среда выполнения Go сама распределяет их по потокам ОС
+- **Конкурентные**: несколько горутин могут выполняться одновременно
+- **Простые в создании**: достаточно использовать ключевое слово `go` перед вызовом функции
 
-## Creating Goroutines
+## Создание горутин
 
-To create a goroutine, simply prefix any function call with the `go` keyword:
+Чтобы создать горутину, просто добавьте ключевое слово `go` перед вызовом функции:
 
 ```go
-go functionName() // This function now runs concurrently
+go functionName() // Эта функция теперь выполняется конкурентно
 ```
 
-Let’s understand the difference between running a normal function and running a function as a goroutine.
+Разберём разницу между обычным вызовом функции и запуском функции как горутины.
 
-### Running a normal function
+### Обычный вызов функции
 
 ```sh
-statment1
+statement1
 start()
 statement2
 ```
 
-First, `statement1` will be executed.
-Then `start()` function will be called.
-Once the `start()` function finishes then `statement2` will be executed.
+Сначала выполняется `statement1`.
+Затем вызывается функция `start()`.
+После завершения `start()` выполняется `statement2`.
 
-### Running a function as a goroutine
+### Запуск функции как горутины
 
 ```sh
-statment1
+statement1
 go start()
 statement2
 ```
 
-First, `statement1` will be executed.
-Then function `start()` will be called as a goroutine which will execute asynchronously.
-`statement2` will be executed immediately. It will not wait for `start()` function to complete. The start function will be executed concurrently as a goroutine while the rest of the program continues its execution.
+Сначала выполняется `statement1`.
+Затем функция `start()` вызывается как горутина, которая выполняется асинхронно.
+`statement2` выполняется немедленно — не ожидая завершения `start()`. Функция `start` выполняется конкурентно как горутина, пока остальная программа продолжает своё выполнение.
 
-When calling a function as a goroutine, the execution flow will not stop for the function to finish.
-The program will continue from the next line while the goroutine will be executed asynchronously in the background.
-It's important to note that any return value from the goroutine will be ignored.
+При вызове функции как горутины поток выполнения не останавливается до её завершения.
+Программа продолжится со следующей строки, пока горутина асинхронно выполняется в фоне.
+Важно: любое возвращаемое значение горутины игнорируется.
 
-## Important Concepts
+## Важные концепции
 
-**Main Goroutine**: Every Go program starts with one goroutine running the `main()` function. When the main goroutine terminates, the entire program terminates, even if other goroutines are still running.
+**Главная горутина**: каждая программа Go начинается с одной горутины, выполняющей функцию `main()`. Когда главная горутина завершается, программа завершается полностью, даже если другие горутины ещё работают.
 
-**Scheduling**: The Go runtime automatically manages when and where goroutines run. You don't control which OS thread they run on.
+**Планировщик**: среда выполнения Go автоматически управляет тем, когда и где выполняются горутины. Вы не управляете, на каком потоке ОС они работают.
 
-**Why Use time.Sleep()**: In early goroutine examples, you'll often see `time.Sleep()` to give goroutines time to execute before the main function ends. This is a temporary solution - later you'll learn better synchronization methods like channels and WaitGroups.
+**Зачем нужен time.Sleep()**: в первых примерах горутин часто используется `time.Sleep()`, чтобы дать горутинам время выполниться до завершения главной функции. Это временное решение — позже вы узнаете более правильные методы синхронизации: каналы и WaitGroup.
 
-## Your Task
+## Задание
 
-Look at the `main.go` file and complete the exercise.
-Create a function, which will be our goroutine, that prints "In Goroutine".
-Then sleep for one second and print a statement before and after our go routine.
+Откройте файл `main.go` и выполните упражнение.
+Создайте функцию, которая будет нашей горутиной, печатающей "In Goroutine".
+Затем подождите одну секунду и выведите сообщения до и после запуска горутины.
 
-The goal is to understand how to:
+Цель — понять как:
 
-1. Create goroutines using the `go` keyword
-2. Observe concurrent execution
-3. Understand why we need to wait for goroutines to complete
+1. Создавать горутины с помощью ключевого слова `go`
+2. Наблюдать конкурентное выполнение
+3. Понимать, зачем нужно ждать завершения горутин
 
-## Expected Behavior
+## Ожидаемое поведение
 
-When you run your completed program, you should see output from your go routine different from the usual execution flow. The go routine will not wait for the instructions to finish and go will execute immediately the instructions after our go routine.
+При запуске программы вы увидите вывод горутины в порядке, отличном от обычного потока выполнения. Горутина не будет ждать завершения инструкций — Go немедленно выполнит инструкции после запуска горутины.
 
-## Hint
+## Подсказка
 
-Remember that the `go` keyword turns any function call into a goroutine. The function signature doesn't change - you just add `go` before calling it.
+Ключевое слово `go` превращает любой вызов функции в горутину. Сигнатура функции не меняется — просто добавьте `go` перед вызовом.
 
 ```go
 package main
@@ -86,10 +86,10 @@ import (
 )
 
 func main() {
-  // Your go routine goes here
+  // Запустите горутину здесь
 
   fmt.Println("Started")
-  // Your time.Sleep goes here
+  // Добавьте time.Sleep здесь
 
   fmt.Println("Finished")
 }
@@ -101,7 +101,7 @@ func start() {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main

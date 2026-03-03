@@ -1,8 +1,8 @@
-// Exercise: Routines
+// Упражнение: Горутины
 
-// Document yourself and ask what a goroutine is.
-// Create a go routine named `start()` and call it inside our main() block
-// Notice how goroutines do not wait for the execution to finish and follows with the next code statements
+// Изучите самостоятельно, что такое горутина.
+// Создайте горутину с именем `start()` и вызовите её внутри блока main()
+// Обратите внимание, как горутины не ждут завершения выполнения и продолжают со следующих инструкций
 
 package main
 
@@ -10,17 +10,16 @@ import "fmt"
 import "time"
 
 func main() {
-	// call our go routine here
+	// вызовите горутину здесь
 
-	// Immediately after calling our go routine, we will print "Started"
-	// Note that possibly "Started" can be printed BEFORE our go routine string
+	// Сразу после запуска горутины выведем "Started"
+	// Обратите внимание: "Started" может напечататься ДО строки от горутины
 	fmt.Println("Started")
-	// add a sleep of 1 second here
+	// добавьте паузу в 1 секунду здесь
 
 	fmt.Println("Finished")
 }
 
 func start() {
-	// Print something
+	// Выведите что-нибудь
 }
-

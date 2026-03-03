@@ -1,13 +1,13 @@
-// Exercise: With a single string variable, use access the first character with the string index
-// This is only valid with ASCII characters, and the print value will be the ASCII number
-// string[n] is how you should access the value
+// Упражнение: Используя единственную строковую переменную, получите первый символ по индексу строки
+// Это работает только с ASCII-символами, и выведенное значение будет ASCII-кодом символа
+// Для доступа к значению используйте string[n]
 
 package main
 
 import "fmt"
 
-func main () {
-	// Here goes your code
+func main() {
+	// Здесь пишите ваш код
 	var string1 string
 	// ...
 }

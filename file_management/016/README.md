@@ -1,58 +1,58 @@
-# Exercise: Check if a file exists
+# Упражнение: Проверить существование файла
 
-The standard library of golang also provides a package for operative system functionality.
+Стандартная библиотека Go также предоставляет пакет для работы с операционной системой.
 
-The package is called [os](https://pkg.go.dev/os) and it has a wide range of options for us. It is usually used for file system management.
+Этот пакет называется [os](https://pkg.go.dev/os) и предлагает широкий набор возможностей. Обычно он используется для управления файловой системой.
 
-## Paths
+## Пути
 
-It could be that you are running your code on a linux machine, a Windows one, etc.
-It is nice to know how the filesystem is structured. Usually filesystems have a hyerarchy of folders, usually the top-level in linux is the root folder `/` and in Windows it is a convention to use the `C:\\` drive as the root folder.
+Ваш код может выполняться на Linux, Windows и других системах.
+Полезно знать, как устроена файловая система. Обычно файловые системы имеют иерархию папок: в Linux корневая папка — `/`, в Windows принято использовать диск `C:\\` в качестве корневого.
 
-When you execute your code, you can reference the files with the absolute path on your filesystem or the relative one.
+При выполнении кода файлы можно указывать по абсолютному или относительному пути.
 
-### What is an absolute path?
+### Что такое абсолютный путь?
 
-An absolute path is showing all the filesystem hierarchy with the file we are trying to reference. A techy parallel would be [breadcrumb navigation](https://en.wikipedia.org/wiki/Breadcrumb_navigation).
-An example could be `/home/username/app/main.go` for a linux filesystem or `C:\Users\JohnDoe\Documents\MyFile.txt` in a Windows system.
+Абсолютный путь показывает всю иерархию файловой системы до нужного файла. Технической аналогией служит [навигационная цепочка (breadcrumb)](https://en.wikipedia.org/wiki/Breadcrumb_navigation).
+Например: `/home/username/app/main.go` для Linux или `C:\Users\JohnDoe\Documents\MyFile.txt` для Windows.
 
-### What is a relative path?
+### Что такое относительный путь?
 
-A relative path is only referencing the file we are trying to refer **from the current context** (that is, from the current directory).
-Imagine we spawn a terminal in the `/home/username` directory, then our relative path to the file would be `./app/main.go`
-In a Windows system, if we spawned a powershell in `C:\Users\JohnDoe` the relative path to Myfile.txt would be `.\Documents\MyFile.txt`.
+Относительный путь указывает файл **относительно текущего контекста** (текущего каталога).
+Представьте, что терминал открыт в директории `/home/username` — тогда относительный путь к файлу: `./app/main.go`.
+В Windows, если PowerShell открыт в `C:\Users\JohnDoe`, относительный путь к MyFile.txt: `.\Documents\MyFile.txt`.
 
-An important concept with relative paths is that the single dot `.`, represents the current directory, and the double dot `..` represents the parent directory.
+Важная концепция: одна точка `.` означает текущую директорию, две точки `..` — родительскую.
 
-Folders also have their own permissions and special attributes, but we're not going to expand on the topic here (as it is huge!).
+Папки также имеют собственные права доступа и атрибуты, но мы не будем здесь углубляться в эту тему.
 
-## Function signature
+## Сигнатура функции
 
-When you are visiting the documentation of some packages, you will usually find it's function description and the function signature.
-When you create a function, you are effectively creating a function signature aswell!
-A function signature defines the structure and behaviour of a function, when you write a function, you also write it's signature, let's take the example of the `os.Open()` function signature:
+При изучении документации пакетов вы обычно найдёте описание функции и её сигнатуру.
+При создании функции вы также создаёте её сигнатуру!
+Сигнатура функции определяет структуру и поведение функции. Рассмотрим пример — сигнатуру функции `os.Open()`:
 
 ```go
 func Open(name string) (*File, error)
-// Syntax:
-// func <func name>(<argument/s> <argument/s_type>, ...) (return type/s)
+// Синтаксис:
+// func <имя_функции>(<аргумент/ы> <тип_аргумента/ов>, ...) (тип/ы возвращаемых значений)
 ```
 
-The Open function will take a string as it's only argument, and will return both the pointer to a File and an error interface.
+Функция Open принимает строку в качестве единственного аргумента и возвращает как указатель на File, так и интерфейс error.
 
-We can see the `os.Open()` in action:
+Посмотрим `os.Open()` в действии:
 
 ```go
-file, err := os.Open("file.go") // uses the os.Open() function
+file, err := os.Open("file.go") // использует функцию os.Open()
 if err != nil {
   log.Fatal(err)
 }
 ```
 
-Now that you know function signatures, you can quickly go over the documentation of packages and use them!
+Теперь, зная сигнатуры функций, вы можете быстро ориентироваться в документации пакетов и использовать их!
 
-Exercise: Check if a file exists
-Tip: use the [os.Stat()](https://pkg.go.dev/os#Stat) function
+Упражнение: Проверьте, существует ли файл
+Подсказка: используйте функцию [os.Stat()](https://pkg.go.dev/os#Stat)
 
 ```go
 package main
@@ -65,7 +65,7 @@ func main () {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -74,11 +74,11 @@ import "fmt"
 import "os"
 
 func main () {
-  // Here goes your code
+  // Ваш код здесь
   if _, err := os.Stat("file-exists.go"); err == nil {
-    fmt.Printf("File exists\n");  
+    fmt.Printf("File exists\n");
     } else {
-    fmt.Printf("File does not exist\n");  
+    fmt.Printf("File does not exist\n");
     }
 }
 ```

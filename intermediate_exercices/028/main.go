@@ -1,23 +1,23 @@
-// Exercise: Functions
+// Упражнение: Функции
 
-// Create a function that sums 2 numbers, then nest that function in a second function, that will add a third number
-// In the main program, only call the secondsum function
+// Создайте функцию, складывающую 2 числа, затем вложите её в другую функцию, которая добавит третье число
+// В главной программе вызывайте только функцию secondSum
 
 package main
 
 import "fmt"
 
 func sum(x int, y int) int {
-	
+
 }
 
 func secondSum(x, y, z int) int {
-	
+
 }
 
-func main () {
+func main() {
 	var result int
-	// Your code goes here
+	// Ваш код здесь
 
 	fmt.Println(result)
 }

@@ -1,18 +1,18 @@
-# Exercise: Arrays II
+# Упражнение: Массивы II
 
-A string variable is an array of tinier elements of type `char`.
+Строковая переменная — это массив более мелких элементов типа `char`.
 
-For example the word `TREE` is an array of 4 characters, each character will have an assigned index.
-The first element (with index 0) is the letter 'T', the second one (with index 1) is the letter 'R' and so on.
+Например, слово `TREE` — это массив из 4 символов, каждому из которых присвоен индекс.
+Первый элемент (с индексом 0) — буква 'T', второй (с индексом 1) — буква 'R' и так далее.
 
 ```txt
 T - R - E - E
 0 - 1 - 2 - 3
 ```
 
-Exercise: With a single string variable named helloWorld, print only the first character.
+Упражнение: Используя единственную строковую переменную с именем helloWorld, выведите только первый символ.
 
-- string[n] is how you should access the value, with n being the index number.
+- Для доступа к значению используйте `string[n]`, где n — номер индекса.
 
 ```go
 package main
@@ -22,13 +22,13 @@ import "fmt"
 func main () {
   var helloWorld string
   helloWorld = "Hello World!"
-  // Here goes your code
+  // Здесь пишите ваш код
   fmt.Println()
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -36,14 +36,14 @@ package main
 import "fmt"
 
 func main() {
-  // Creating new variable called helloWorld
+  // Создаём новую переменную с именем helloWorld
   var helloWorld string
   helloWorld = "Hello World!"
-  // Print the first letter
+  // Выводим первую букву
   fmt.Println(helloWorld[0])
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go
 ```
 

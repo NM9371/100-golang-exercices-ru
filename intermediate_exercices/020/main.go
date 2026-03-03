@@ -1,21 +1,21 @@
-// Exercise: STRUCT
-// Create a Hotel structure with:
+// Упражнение: СТРУКТУРЫ
+// Создайте структуру Hotel со следующими полями:
 // numRooms int32
 // streetName string
 // hasPool bool
 
-// Then assign a value to each of those attributes
+// Затем присвойте значение каждому из этих полей
 
 package main
 
 import "fmt"
 
 type Hotel struct {
-	// Your code goes here
+	// Ваш код здесь
 
 }
 
-func main () {
+func main() {
 	var myHotel Hotel
-	// Your code goes here
+	// Ваш код здесь
 }

@@ -1,14 +1,14 @@
-// Exercise: RANGE and Blank identifier
-// use range to print the values of the array
-// use the blank identifier variable to supress the index, DON'T show the index, just the values of the array!
+// Упражнение: RANGE и пустой идентификатор
+// используйте range для вывода значений массива
+// используйте пустой идентификатор, чтобы подавить вывод индекса — НЕ показывайте индекс, только значения!
 
 package main
 
 import "fmt"
 
-func main () {
-	// initialized array of 10 int values [1..10]
-	var arr = [10]int{1,2,3,4,5,6,7,8,9,10}
-	// Here goes your code
-	
+func main() {
+	// инициализированный массив из 10 значений int [1..10]
+	var arr = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	// Здесь пишите ваш код
+
 }

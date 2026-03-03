@@ -1,64 +1,64 @@
-# Exercise 40: Channels and Timeouts
+# Упражнение 40: Каналы и таймауты
 
-## Implementing Timeouts with Select
+## Реализация таймаутов с помощью select
 
-Timeouts are crucial in concurrent programming to avoid waiting indefinitely for slow or unresponsive operations. Go makes timeouts elegant using the `select` statement combined with `time.After()`.
+Таймауты критически важны в конкурентном программировании, чтобы избежать бесконечного ожидания медленных или не отвечающих операций. Go делает таймауты элегантными, используя оператор `select` вместе с `time.After()`.
 
-## The time.After() Function
+## Функция time.After()
 
-`time.After(duration)` returns a channel that will receive a value after the specified duration:
+`time.After(duration)` возвращает канал, который получит значение через указанную продолжительность:
 
 ```go
 timeout := time.After(3 * time.Second)
-<-timeout  // Blocks for 3 seconds
+<-timeout  // Блокируется на 3 секунды
 ```
 
-## Timeout Pattern with Select
+## Паттерн таймаута с select
 
-Combine `time.After()` with `select` to create timeouts:
+Объедините `time.After()` с `select` для создания таймаутов:
 
 ```go
 select {
 case result := <-workChannel:
-    fmt.Println("Work completed:", result)
+    fmt.Println("Работа завершена:", result)
 case <-time.After(5 * time.Second):
-    fmt.Println("Operation timed out!")
+    fmt.Println("Операция прервана по таймауту!")
 }
 ```
 
-## Why Timeouts Matter
+## Почему таймауты важны
 
-- **Prevent hanging**: Don't wait forever for slow operations
-- **Resource management**: Free up goroutines that are waiting
-- **User experience**: Provide feedback when operations take too long
-- **System reliability**: Detect and handle unresponsive components
+- **Предотвращают зависание**: не ждать вечно медленных операций
+- **Управление ресурсами**: освобождают горутины, которые ждут
+- **Пользовательский опыт**: обратная связь, когда операции занимают слишком много времени
+- **Надёжность системы**: обнаружение и обработка не отвечающих компонентов
 
-## Your Task
+## Задание
 
-Create a timeout mechanism where:
-1. A goroutine sleeps for 10 seconds then sends a message
-2. The main program waits for either:
-   - The message from the channel, OR
-   - A timeout after 3 seconds
-3. Since the timeout (3s) is shorter than the work time (10s), the timeout should occur first
+Создайте механизм таймаута, где:
+1. Горутина спит 10 секунд, затем отправляет сообщение
+2. Главная программа ждёт либо:
+   - Сообщения из канала, ИЛИ
+   - Таймаута через 3 секунды
+3. Поскольку таймаут (3с) короче времени работы (10с), таймаут должен произойти первым
 
-## Expected Behavior
+## Ожидаемое поведение
 
-You should see "Timeout!!!!" printed because the 3-second timeout occurs before the 10-second work completes.
+Вы должны увидеть "Timeout!!!!", потому что трёхсекундный таймаут происходит раньше, чем завершается десятисекундная работа.
 
-## Key Concepts
+## Ключевые концепции
 
-- `time.After()` creates a timeout channel
-- `select` waits for whichever happens first
-- This pattern is non-blocking and deterministic
+- `time.After()` создаёт канал таймаута
+- `select` ждёт того, что произойдёт первым
+- Этот паттерн неблокирующий и детерминированный
 
 ```go
-// Exercise: Channels and timeouts
+// Упражнение: Каналы и таймауты
 
-// Create a go routine that uses time.Sleep for 10 seconds, and then add the string "10 seconds passed" into the channel (of type string)
-// in the main program, inside the select block, have 2 cases:
-// 1- The message from the channel
-// 2- A timeout with the "time.After(3 * time.Second)" statement. After timeout happens, print "Timeout!!!!"
+// Создайте горутину, которая использует time.Sleep на 10 секунд, затем добавляет строку "10 seconds passed" в канал (типа string)
+// в главной программе внутри блока select имейте 2 случая:
+// 1- Сообщение из канала
+// 2- Таймаут с оператором "time.After(3 * time.Second)". После таймаута выведите "Timeout!!!!"
 
 
 package main
@@ -68,7 +68,7 @@ import "time"
 
 func timeout(c chan string){
 	for {
-		
+
 	}
 }
 
@@ -78,23 +78,23 @@ func main () {
 	go timeout(c1)
 	for {
 		select {
-		
+
 		}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels and timeouts
+// Упражнение: Каналы и таймауты
 
-// Create a go routine that uses time.Sleep for 10 seconds, and then add the string "10 seconds passed" into the channel (of type string)
-// in the main program, inside the select block, have 2 cases:
-// 1- The message from the channel
-// 2- A timeout with the "time.After(3 * time.Second)" statement. After timeout happens, print "Timeout!!!!"
+// Создайте горутину, которая использует time.Sleep на 10 секунд, затем добавляет строку "10 seconds passed" в канал (типа string)
+// в главной программе внутри блока select имейте 2 случая:
+// 1- Сообщение из канала
+// 2- Таймаут с оператором "time.After(3 * time.Second)". После таймаута выведите "Timeout!!!!"
 
 
 package main
@@ -121,7 +121,7 @@ func main () {
 			fmt.Println("Timeout!!!!")
 		}
 	}
-	fmt.Println("Goroutines finished.") // You shouldn't see this message as the goroutines run forever!
+	fmt.Println("Goroutines finished.") // Это сообщение не должно появиться, т.к. горутины работают вечно!
 }
 ```
 

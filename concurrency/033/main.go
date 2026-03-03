@@ -1,26 +1,24 @@
-// Exercise: Channels
+// Упражнение: Каналы
 
-// It's important to get this concept, document yourself first! :) 
-// There are two concurrent routines (f1 and f2)
-// Send a message "Hello from f1" from f1 function
-// Receive the message from f1 into the f2 function, and print "I am f2 and ..." + the message from f1
-// This should be done with a channel
+// Важно понять эту концепцию, сначала изучите самостоятельно! :)
+// Есть две конкурентные горутины (f1 и f2)
+// Отправьте сообщение "Hello from f1" из функции f1
+// Получите сообщение из f1 в функции f2 и выведите "I am f2 and ..." + сообщение от f1
+// Сделайте это с помощью канала
 
 package main
 
 import "fmt"
 import "time"
 
-func f1 (c chan string){
-	
+func f1(c chan string) {
+
 }
 
-func f2 (c chan string){
-	
+func f2(c chan string) {
+
 }
-func main () {
-	
-	
+func main() {
 
 	// this sleep is in order to not exit the program sooner than the routine lifetime :)
 	time.Sleep(1 * time.Second)

@@ -1,68 +1,68 @@
-# Exercise 36: Sequential Execution with Channels
+# Упражнение 36: Последовательное выполнение с каналами
 
-## Controlling Execution Order
+## Управление порядком выполнения
 
-Sometimes you need to run goroutines in a specific sequence.
-While goroutines normally run concurrently (at the same time), channels allow you to coordinate and control their execution order.
+Иногда нужно запускать горутины в определённой последовательности.
+Хотя горутины обычно выполняются конкурентно (одновременно), каналы позволяют координировать и контролировать порядок их выполнения.
 
-## Sequential vs Concurrent Execution
+## Последовательное и конкурентное выполнение
 
-- **Concurrent**: Multiple goroutines running at the same time
-- **Sequential**: One goroutine runs, then the next, then the next...
+- **Конкурентное**: несколько горутин выполняются одновременно
+- **Последовательное**: сначала выполняется одна горутина, затем следующая, и так далее...
 
-## Using Channels for Sequencing
+## Использование каналов для упорядочивания
 
-You can use channel synchronization to ensure one goroutine completes before starting the next:
+Можно использовать синхронизацию через канал, чтобы гарантировать завершение одной горутины перед запуском следующей:
 
 ```go
-// Pattern for sequential execution
+// Паттерн для последовательного выполнения
 done := make(chan bool)
 go task1(done)
-<-done  // Wait for task1 to complete
+<-done  // Ждём завершения task1
 
-go task2()  // Now start task2
+go task2()  // Теперь запускаем task2
 ```
 
-## Buffered Channel Note
+## Замечание о буферизованном канале
 
-Notice the exercise uses a buffered channel with capacity 1:
+Обратите внимание, что в упражнении используется буферизованный канал с ёмкостью 1:
 ```go
 make(chan bool, 1)
 ```
 
-This prevents the goroutine from blocking when sending the completion signal, even if the main function isn't immediately ready to receive.
+Это предотвращает блокировку горутины при отправке сигнала завершения, даже если функция main не готова принять сигнал немедленно.
 
-## Why Sequential Execution?
+## Зачем нужно последовательное выполнение?
 
-Sometimes you need sequential execution because:
-- **Dependencies**: Task2 depends on Task1's results
-- **Resource constraints**: Only one task can use a resource at a time
-- **Ordered output**: Results must appear in specific order
+Иногда последовательное выполнение необходимо, потому что:
+- **Зависимости**: task2 зависит от результатов task1
+- **Ограничения ресурсов**: только одна задача может использовать ресурс одновременно
+- **Упорядоченный вывод**: результаты должны появляться в определённом порядке
 
-## Your Task
+## Задание
 
-You need to:
-1. Start the first goroutine (`task`)
-2. Wait for it to complete
-3. Only then start the second goroutine (`task2`)
+Вам нужно:
+1. Запустить первую горутину (`task`)
+2. Дождаться её завершения
+3. Только после этого запустить вторую горутину (`task2`)
 
-## Expected Behavior
+## Ожидаемое поведение
 
-The output should show:
+Вывод должен показать:
 1. "I am running in the main thread concurrently"
 2. "running Task1 goroutine..."
 3. "done"
 4. "Task2 goroutine..."
 
-Task2 should only run AFTER Task1 completes.
+task2 должна запуститься ТОЛЬКО ПОСЛЕ завершения task1.
 
-## Hint
+## Подсказка
 
-You'll need to use channel operations to coordinate between the main function and the goroutines. Remember that receiving from a channel blocks until a value is available.
+Вам нужно использовать операции с каналом для координации между функцией main и горутинами. Помните, что получение из канала блокируется до тех пор, пока значение не станет доступным.
 
 ```go
-// There are two goroutines now
-// Call the first goroutine (named 'task') and run the second goroutine 'task2' ONLY after the first one has finished
+// Есть две горутины
+// Вызовите первую горутину (с именем 'task') и запустите вторую горутину 'task2' ТОЛЬКО после завершения первой
 
 package main
 
@@ -83,7 +83,7 @@ func task2() {
 func main() {
   var done chan bool = make(chan bool, 1)
   fmt.Println("I am running in the main thread concurrently")
-  // Your code goes here
+  // Ваш код здесь
 
 }
 
@@ -91,13 +91,13 @@ func main() {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels synchronisation
+// Упражнение: Синхронизация каналов
 
-// There are two goroutines now
-// Call the first goroutine (named 'task') and run the second goroutine 'task2' ONLY after the first one has finished
+// Есть две горутины
+// Вызовите первую горутину (с именем 'task') и запустите вторую горутину 'task2' ТОЛЬКО после завершения первой
 
 package main
 
@@ -118,7 +118,7 @@ func task2() {
 func main() {
   var done chan bool = make(chan bool, 1)
   fmt.Println("I am running in the main thread concurrently")
-  // Your code goes here
+  // Ваш код здесь
   go task(done)
   if <-done {
     go task2()

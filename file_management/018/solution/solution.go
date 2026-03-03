@@ -1,19 +1,19 @@
-// Exercise: Write a list of 5 countries to a file
-// Tip: use the "os" package
+// Упражнение: Запишите список из 5 стран в файл
+// Подсказка: используйте пакет "os"
 
 package main
 
 import "os"
 
-func main () {
-	// Here goes your code
-  file, err := os.Create("contries.txt")
+func main() {
+	// Ваш код здесь
+	file, err := os.Create("contries.txt")
 
-  if err != nil {
-    return
-  }
+	if err != nil {
+		return
+	}
 
-  defer file.Close()
+	defer file.Close()
 
-  file.WriteString("Germany\nFrance\nUSA\nSpain\nUK\n")
+	file.WriteString("Germany\nFrance\nUSA\nSpain\nUK\n")
 }

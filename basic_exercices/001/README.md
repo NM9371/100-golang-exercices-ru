@@ -1,13 +1,13 @@
-# Exercise: fmt.Println()
+# Упражнение: fmt.Println()
 
-Usually the first exercise while learning a programming language is printing ["Hello World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) into the standard output. Our goal here will be the same, but if you feel it's a hard start, there's more briefing for 'ya!
+Обычно первое упражнение при изучении языка программирования — это вывод ["Hello World!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) в стандартный вывод. Наша цель здесь та же, но если вам кажется, что это сложный старт — вот немного дополнительной информации!
 
-## Minimum amount of code
+## Минимальный объём кода
 
-According to the [golang specification](https://go.dev/ref/spec#Program_execution)
-> A complete program is created by linking a single, unimported package called the main package with all the packages it imports, transitively. The main package must have package name main and declare a function main that takes no arguments and returns no value.
+Согласно [спецификации golang](https://go.dev/ref/spec#Program_execution)
+> Полноценная программа создаётся путём связывания единственного, неимпортируемого пакета, называемого пакетом main, со всеми импортируемыми им пакетами транзитивно. Пакет main должен иметь имя пакета main и объявлять функцию main, не принимающую аргументов и не возвращающую значения.
 
-For simplicity's sake, the minimum amount of code you will need to run your code is:
+Для простоты, минимальный объём кода, необходимый для запуска программы:
 
 ```go
 package main
@@ -17,33 +17,33 @@ func main () {
 }
 ```
 
-The code above executes nothing.
-`package main` just states the go compiler is a standalone executable.
-`func main () {}` is the entrypoint of the program, go will run this function when you execute the compiled binary.
+Приведённый выше код ничего не выполняет.
+`package main` сообщает компилятору Go, что программа является самостоятельным исполняемым файлом.
+`func main () {}` — это точка входа программы; Go запустит эту функцию при выполнении скомпилированного бинарного файла.
 
-## Executing your code
+## Запуск кода
 
-To build an executable of a program, spawn a terminal into your working directory and type `go build .` command will build a binary with your program that you can execute.
+Чтобы собрать исполняемый файл программы, откройте терминал в рабочем каталоге и введите команду `go build .` — она соберёт бинарный файл с вашей программой, который можно запустить.
 
-Do we always need to build binaries after every execution?
-There's no need for it as go provides the `go run .` command, which behind the scenes builds a temporary executable, it runs it, and then it deletes it.
+Нужно ли каждый раз собирать бинарный файл?
+Нет необходимости, так как Go предоставляет команду `go run .`, которая под капотом собирает временный исполняемый файл, запускает его, а затем удаляет.
 
-## Exercise
+## Упражнение
 
-In this exercise you will learn to import packages. You can import public libraries from other developers like you can import libraries that are in the go [standard library](https://pkg.go.dev/std)
+В этом упражнении вы научитесь импортировать пакеты. Можно импортировать как публичные библиотеки от других разработчиков, так и библиотеки из [стандартной библиотеки](https://pkg.go.dev/std) Go.
 
-To import a library, you just need to type `import <library_name>`, for example `import fmt` outside the main function.
+Чтобы импортировать библиотеку, достаточно написать `import <имя_библиотеки>`, например `import fmt` вне функции main.
 
-*The fmt library implements formatted Input/Output functions, for more info: [https://pkg.go.dev/fmt](https://pkg.go.dev/fmt)*
+*Библиотека fmt реализует форматированные функции ввода/вывода. Подробнее: [https://pkg.go.dev/fmt](https://pkg.go.dev/fmt)*
 
-You can use the [fmt.Println()](https://pkg.go.dev/fmt#Println) function to print a string into the standard output.
+Функцию [fmt.Println()](https://pkg.go.dev/fmt#Println) можно использовать для вывода строки в стандартный вывод.
 
-Exercise: Run a program that prints "Hello World!"
+Упражнение: Запустите программу, которая выводит "Hello World!"
 
-- Use the "fmt" Package
-- Print "Hello World!" to your standard output
-- Run the program
-- Make it an executable
+- Используйте пакет "fmt"
+- Выведите "Hello World!" в стандартный вывод
+- Запустите программу
+- Создайте исполняемый файл
 
 ```go
 package main
@@ -51,12 +51,12 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -67,10 +67,10 @@ func main () {
   fmt.Println("Hello World!")
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go
 
-// To build an executable file
+// Чтобы собрать исполняемый файл:
 // - go build solution.go
 ```
 

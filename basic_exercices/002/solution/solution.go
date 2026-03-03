@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func main () {
-	// Printing my name
+func main() {
+	// Вывод имени
 	fmt.Println("My Name is Enin")
-	// Printing my address!
+	// Вывод адреса!
 	fmt.Println("My address is: Summs Rift 42")
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go

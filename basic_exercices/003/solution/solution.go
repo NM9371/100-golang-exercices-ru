@@ -3,12 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	// Creating new variable called helloWorld
+	// Создаём новую переменную с именем helloWorld
 	var helloWorld string
 	helloWorld = "Hello World!"
-	// Print the variable
+	// Выводим переменную
 	fmt.Println(helloWorld)
 }
 
-// To run the program:
+// Чтобы запустить программу:
 // - go run solution.go

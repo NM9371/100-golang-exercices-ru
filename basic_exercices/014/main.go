@@ -1,15 +1,15 @@
-// Exercise: User input
-// Using only the fmt package, ask a user for it's name and then for it's surname
-// Store it in 2 variables called "name" and "surname"
-// After user has entered the data, print it out
+// Упражнение: Пользовательский ввод
+// Используя только пакет fmt, запросите у пользователя имя, а затем фамилию
+// Сохраните их в 2 переменных с именами "name" и "surname"
+// После ввода данных пользователем выведите их
 
-// Tip: https://pkg.go.dev/fmt#hdr-Scanning
+// Подсказка: https://pkg.go.dev/fmt#hdr-Scanning
 
 package main
 
 import "fmt"
 
-func main () {
-	// Here goes your code
+func main() {
+	// Здесь пишите ваш код
 	fmt.Printf("...")
 }

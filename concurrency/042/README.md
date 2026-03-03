@@ -1,10 +1,10 @@
-# Exercise 42: Range Over Buffered Channels
+# Упражнение 42: Range по буферизованным каналам
 
-## Using Range with Channels
+## Использование range с каналами
 
-The `range` keyword works with channels just like with slices and maps. It's a clean way to receive all values from a channel until it's closed.
+Ключевое слово `range` работает с каналами так же, как со слайсами и картами. Это удобный способ получить все значения из канала до его закрытия.
 
-## Range Syntax with Channels
+## Синтаксис range с каналами
 
 ```go
 for value := range channel {
@@ -12,51 +12,51 @@ for value := range channel {
 }
 ```
 
-## Important: Channels Must Be Closed
+## Важно: каналы должны быть закрыты
 
-For `range` to work properly with channels, the channel **must be closed**. Otherwise, the range loop will block forever waiting for more values.
+Чтобы `range` правильно работал с каналами, канал **должен быть закрыт**. В противном случае цикл range заблокируется навсегда в ожидании новых значений.
 
 ```go
 ch := make(chan int, 3)
 ch <- 1
 ch <- 2
 ch <- 3
-close(ch)  // Essential for range to work!
+close(ch)  // Обязательно для работы range!
 
 for value := range ch {
-    fmt.Println(value)  // Prints 1, 2, 3, then exits
+    fmt.Println(value)  // Выводит 1, 2, 3, затем завершается
 }
 ```
 
-## What Range Does
+## Что делает range
 
-1. **Receives values**: Gets each value from the channel
-2. **Blocks when empty**: Waits for new values if channel is open
-3. **Exits when closed**: Loop ends when channel is closed AND empty
-4. **No index**: Unlike slices, only gives you the value, not an index
+1. **Получает значения**: берёт каждое значение из канала
+2. **Блокируется при пустом**: ждёт новых значений, если канал открыт
+3. **Завершается при закрытии**: цикл заканчивается, когда канал закрыт И пуст
+4. **Без индекса**: в отличие от слайсов, даёт только значение, не индекс
 
-## Buffered Channels and Range
+## Буферизованные каналы и range
 
-With buffered channels, you can:
-1. Fill the buffer with multiple values
-2. Close the channel
-3. Range over all buffered values
+С буферизованными каналами можно:
+1. Заполнить буфер несколькими значениями
+2. Закрыть канал
+3. Пройти по всем буферизованным значениям через range
 
-This is perfect for producer-consumer patterns where you generate all data first, then process it.
+Это идеально для паттернов производитель-потребитель, где все данные генерируются сначала, а затем обрабатываются.
 
-## Your Task
+## Задание
 
-Use the `range` keyword to iterate over a buffered channel containing integers. Remember that the channel must be closed before you can range over it.
+Используйте ключевое слово `range` для итерации по буферизованному каналу целых чисел. Помните, что канал должен быть закрыт перед использованием range.
 
 ```go
-// Exercise: Channels - Range
+// Упражнение: Каналы — range
 
-// In this exercise we will use the range keyword to iterate over a buffered (async) channel.
-// Create a buffered channel (type int) of a dimension of 5
-// Put 5 numbers into the channel
-// use the 'range' keyword to iterate over the channel elements and print them
+// В этом упражнении мы будем использовать ключевое слово range для итерации по буферизованному (асинхронному) каналу.
+// Создайте буферизованный канал (тип int) размерностью 5
+// Поместите 5 чисел в канал
+// Используйте ключевое слово 'range' для итерации по элементам канала и их вывода
 
-// TIP: but buffered channels need to be closed before iterating over them!!! 
+// ПОДСКАЗКА: буферизованные каналы нужно закрыть перед итерацией по ним!!!
 
 package main
 
@@ -70,17 +70,17 @@ func main () {
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels - Range
+// Упражнение: Каналы — range
 
-// In this exercise we will use the range keyword to iterate over a buffered (async) channel.
-// Create a buffered channel (type int) of a dimension of 5
-// Put 5 numbers into the channel
-// use the 'range' keyword to iterate over the channel elements and print them
+// В этом упражнении мы будем использовать ключевое слово range для итерации по буферизованному (асинхронному) каналу.
+// Создайте буферизованный канал (тип int) размерностью 5
+// Поместите 5 чисел в канал
+// Используйте ключевое слово 'range' для итерации по элементам канала и их вывода
 
-// TIP: but buffered channels need to be closed before iterating over them!!! 
+// ПОДСКАЗКА: буферизованные каналы нужно закрыть перед итерацией по ним!!!
 
 package main
 
@@ -96,7 +96,7 @@ func main () {
 	c <- 22
 	c <- 1
 	close(c)
-	
+
 	for element := range c {
 		fmt.Println(element)
 	}

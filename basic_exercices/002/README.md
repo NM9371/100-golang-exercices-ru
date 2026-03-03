@@ -1,20 +1,20 @@
-# Exercise: Comments
+# Упражнение: Комментарии
 
-Comments in code are for explanatory purposes, if some other programmer is working with our code we can give a briefly explanation about what our code does. The comments are ignored by the compiler, it's only useful for the other humans to better understand the code.
+Комментарии в коде служат для пояснений: если другой программист работает с нашим кодом, мы можем кратко объяснить, что делает наш код. Комментарии игнорируются компилятором и полезны только для людей, чтобы лучше понять код.
 
-## There are two types of comments in golang
+## В golang существует два типа комментариев
 
-### Inline comments
+### Однострочные комментарии
 
-They only comment a single line, in order to comment a line in go, the double slash `//` is added at the beginning of the line.
+Они комментируют только одну строку; для комментирования строки в Go в начало строки добавляется двойной слэш `//`.
 
-### Multi-line comments or block comments
+### Многострочные комментарии или блочные комментарии
 
-They comment multiple lines, they use the `/* <COMMENT> */` syntax.
+Они комментируют несколько строк и используют синтаксис `/* <КОММЕНТАРИЙ> */`.
 
-- Use the fmt package
+- Используйте пакет fmt
 
-Exercise: Create a program that shows your name, address and also has some comments in it
+Упражнение: Создайте программу, которая отображает ваше имя, адрес и содержит несколько комментариев
 
 ```go
 package main
@@ -22,12 +22,12 @@ package main
 import "fmt"
 
 func main () {
-  // Here goes your code
+  // Здесь пишите ваш код
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -36,13 +36,13 @@ import "fmt"
 
 func main () {
     /*
-    This is a
-    multiline
-    comment
+    Это
+    многострочный
+    комментарий
     */
-  // Printing my name
+  // Вывод имени
   fmt.Println("My Name is John")
-  // Printing my address!
+  // Вывод адреса!
   fmt.Println("My address is: Summs Rift 42")
 }
 ```

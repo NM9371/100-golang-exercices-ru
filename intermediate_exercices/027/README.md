@@ -1,24 +1,24 @@
-# Exercise: SLICES II
+# Упражнение: Срезы II
 
-Slices are arrays that are dynamically-sized, meaning they have no fixed size!
-Like arrays, they store multiple values of the same type in a single variable.
+Срезы — это массивы с динамическим размером, то есть без фиксированной длины!
+Как и массивы, они хранят несколько значений одного типа в одной переменной.
 
 ```go
-// ARRAY
-// Example of an array containing 5 integer numbers.
+// МАССИВ
+// Пример массива из 5 целых чисел.
 var array = [5]int32{0,1,2,3,4}
-array = append(array, 3) // Compile-time error: first argument to append must be a slice
+array = append(array, 3) // Ошибка компиляции: первый аргумент append должен быть срезом
 
-// SLICE
-// Example of a slice containing 5 integer numbers
+// СРЕЗ
+// Пример среза из 5 целых чисел
 var slice = []int32{0,1,2,3,4}
 slice = append(slice, 3) // ✅ OK
 ```
 
-In the snippet above we can see that the difference in the declaration between array and slice is the absence of the size.
+В приведённом примере видно, что разница между объявлением массива и среза — отсутствие указания размера.
 
-Exercise: From the slice `myslice`, create a new slice containing only the middle 3 elements.
-Hint: use slice[start:end] syntax
+Упражнение: Из среза `myslice` создайте новый срез, содержащий только средние 3 элемента.
+Подсказка: используйте синтаксис slice[начало:конец]
 
 ```go
 package main
@@ -27,13 +27,13 @@ import "fmt"
 
 func main () {
   var slice = []int32{0,1,2,3,4}
-  // Your code goes here
+  // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -42,8 +42,8 @@ import "fmt"
 
 func main() {
   var slice = []int32{0, 1, 2, 3, 4}
-  // Your code goes here
-  // remember the slice index begins at number 0!
+  // Ваш код здесь
+  // Помните, что индекс среза начинается с 0!
   new_slice := slice[1:3]
   fmt.Printf("substring:%v, type: %T", new_slice, new_slice)
 }

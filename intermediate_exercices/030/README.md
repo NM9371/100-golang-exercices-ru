@@ -1,28 +1,28 @@
-# Exercise: Functions III
+# Упражнение: Функции III
 
-Variadic functions can be called with any number of arguments.
-In golang, there is a term called Ellipsis which are three dots `...`, which is used for creating variadic functions.
+Вариадические функции могут вызываться с произвольным числом аргументов.
+В Go для создания вариадических функций используется многоточие `...` (Ellipsis).
 
-According to the [golang spec](https://go.dev/ref/spec#Function_types):
-> The final incoming parameter in a function signature may have a type prefixed with .... A function with such a parameter is called variadic and may be invoked with zero or more arguments for that parameter.
+Согласно [спецификации Go](https://go.dev/ref/spec#Function_types):
+> Последний входной параметр в сигнатуре функции может иметь тип с префиксом .... Функция с таким параметром называется вариадической и может быть вызвана с нулём или более аргументами для этого параметра.
 
-A function that is declared with an Ellipsis can take any nymber of arguments
+Функция, объявленная с многоточием, может принимать любое количество аргументов:
 
 ```go
 package main
-  
+
 import "fmt"
-  
+
 func main() {
-  // 0 arguments 
+  // 0 аргументов
     sayHello()
-  // 1 argument
+  // 1 аргумент
     sayHello("Rahul")
-  // 4 arguments
+  // 4 аргумента
     sayHello("Mohit", "Rahul", "Rohit", "Johny")
 }
-  
-// using Ellipsis
+
+// Использование многоточия (Ellipsis)
 func sayHello(names ...string) {
     for _, n := range names {
         fmt.Printf("Hello %s\n", n)
@@ -30,28 +30,28 @@ func sayHello(names ...string) {
 }
 ```
 
-Create a variadic function that sums all it's numbers passed as arguments.
+Создайте вариадическую функцию, которая суммирует все переданные ей числа.
 
 ```go
 package main
 
 import "fmt"
 
-// Complete the function signature
+// Дополните сигнатуру функции
 func sum() int {
   total := 0
-    // Your code goes here
+    // Ваш код здесь
 }
 
 func main () {
-  // Your code goes here
-  
+  // Ваш код здесь
+
 }
 
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```golang
 package main
@@ -68,7 +68,7 @@ func sum(numbers ...int) int {
 }
 
 func main () {
-  // Your code goes here
+  // Ваш код здесь
   sum(2,3,4,5,6,7)
 }
 ```

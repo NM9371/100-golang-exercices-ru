@@ -1,72 +1,72 @@
-# Exercise 34: Buffered Channels
+# Упражнение 34: Буферизованные каналы
 
-## Understanding Buffered vs Unbuffered Channels
+## Буферизованные и небуферизованные каналы
 
-So far you've worked with **unbuffered channels** (synchronous). Now let's explore **buffered channels** (asynchronous).
+До этого момента вы работали с **небуферизованными каналами** (синхронными). Теперь давайте изучим **буферизованные каналы** (асинхронные).
 
-## Unbuffered Channels (Review)
-- Capacity: 0
-- **Synchronous**: Send blocks until receive happens
-- **Direct handoff**: Values pass directly from sender to receiver
-- Created with: `make(chan type)`
+## Небуферизованные каналы (повторение)
+- Ёмкость: 0
+- **Синхронные**: отправка блокируется до тех пор, пока не произойдёт получение
+- **Прямая передача**: значения передаются напрямую от отправителя к получателю
+- Создаются с помощью: `make(chan type)`
 
-## Buffered Channels
-- **Capacity**: Can hold multiple values
-- **Asynchronous**: Send doesn't block until buffer is full
-- **Internal storage**: Values are queued in the buffer
-- Created with: `make(chan type, capacity)`
+## Буферизованные каналы
+- **Ёмкость**: могут хранить несколько значений
+- **Асинхронные**: отправка не блокируется, пока буфер не заполнен
+- **Внутреннее хранилище**: значения ставятся в очередь в буфере
+- Создаются с помощью: `make(chan type, capacity)`
 
-## How Buffered Channels Work
+## Как работают буферизованные каналы
 
 ```go
-ch := make(chan string, 3) // Buffer can hold 3 strings
+ch := make(chan string, 3) // Буфер может хранить 3 строки
 
-ch <- "first"   // Doesn't block - goes into buffer
-ch <- "second"  // Doesn't block - goes into buffer
-ch <- "third"   // Doesn't block - goes into buffer
-ch <- "fourth"  // BLOCKS - buffer is full!
+ch <- "first"   // Не блокируется — попадает в буфер
+ch <- "second"  // Не блокируется — попадает в буфер
+ch <- "third"   // Не блокируется — попадает в буфер
+ch <- "fourth"  // БЛОКИРУЕТСЯ — буфер заполнен!
 ```
 
-## Key Differences
+## Ключевые отличия
 
-**Unbuffered Channel Behavior:**
-- Every send must have a matching receive ready
-- Tight synchronization between goroutines
-- Good for signaling and coordination
+**Поведение небуферизованного канала:**
+- Каждая отправка должна иметь соответствующее готовое получение
+- Жёсткая синхронизация между горутинами
+- Подходит для сигнализации и координации
 
-**Buffered Channel Behavior:**
-- Sends don't block until buffer is full
-- Receives don't block until buffer is empty
-- Good for producer-consumer scenarios with different speeds
+**Поведение буферизованного канала:**
+- Отправки не блокируются, пока буфер не заполнен
+- Получения не блокируются, пока буфер не пуст
+- Подходит для сценариев производитель-потребитель с разной скоростью
 
-## When to Use Buffered Channels
+## Когда использовать буферизованные каналы
 
-- **Producer faster than consumer**: Buffer smooths out the difference
-- **Batch processing**: Accumulate several values before processing
-- **Decoupling**: Producer and consumer don't need to be synchronized
+- **Производитель быстрее потребителя**: буфер сглаживает разницу
+- **Пакетная обработка**: накопите несколько значений перед обработкой
+- **Развязка**: производитель и потребитель не обязаны быть синхронизированы
 
-## Your Task
+## Задание
 
-Complete the exercise in `main.go`. You need to:
-1. Create a buffered channel with the specified capacity
-2. Send multiple messages without blocking
-3. Use the provided function to retrieve and display messages
+Выполните упражнение в `main.go`. Вам нужно:
+1. Создать буферизованный канал с указанной ёмкостью
+2. Отправить несколько сообщений без блокировки
+3. Использовать предоставленную функцию для получения и отображения сообщений
 
-## Expected Behavior
+## Ожидаемое поведение
 
-You should be able to send all 4 strings immediately (no blocking), then retrieve them one by one using the `pop_message` function.
+Вы должны иметь возможность отправить все 4 строки сразу (без блокировки), а затем получать их одну за другой с помощью функции `pop_message`.
 
-## Important Notes
+## Важные замечания
 
-- Buffer capacity is fixed at creation time
-- Buffered channels still block when full (sends) or empty (receives)
-- The order of messages is preserved (FIFO - First In, First Out)
+- Ёмкость буфера фиксируется при создании
+- Буферизованные каналы всё равно блокируются при заполнении (отправка) или опустошении (получение)
+- Порядок сообщений сохраняется (FIFO — первым пришёл, первым вышел)
 
 ```go
-// Channels that accept a single message (<-) are synchronous. But go also can use async channels, or buffered channels
-// Create a buffered string channel with a capacity of 4
-// Send directly 4 different strings to that channel.
-// Use the pop_message function 4 times to unbuffer the channel and see how it works
+// Каналы, принимающие одно сообщение (<-), синхронны. Но Go также может использовать асинхронные или буферизованные каналы
+// Создайте буферизованный строковый канал с ёмкостью 4
+// Отправьте в него напрямую 4 разные строки.
+// Используйте функцию pop_message 4 раза, чтобы извлечь элементы из канала и посмотреть, как это работает
 
 package main
 
@@ -79,15 +79,15 @@ func pop_message (c chan string){
   fmt.Println(msg)
 }
 func main () {
-  // Your code goes here
+  // Ваш код здесь
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
+  // эта пауза нужна, чтобы не завершить программу раньше времени :)
   time.Sleep(1 * time.Second)
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main
@@ -101,7 +101,7 @@ func pop_message (c chan string){
   fmt.Println(msg)
 }
 func main () {
-  // Your code goes here
+  // Ваш код здесь
   var c chan string = make(chan string, 4)
   c <- "My"
   c <- "Name"
@@ -113,7 +113,7 @@ func main () {
   pop_message(c)
   pop_message(c)
 
-  // this sleep is in order to not exit the program sooner than the routine lifetime :)
+  // эта пауза нужна, чтобы не завершить программу раньше времени :)
   time.Sleep(1 * time.Second)
 }
 ```

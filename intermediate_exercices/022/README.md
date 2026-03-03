@@ -1,22 +1,22 @@
-# Exercise: Random
+# Упражнение: Случайные числа
 
-## Rand package
+## Пакет rand
 
-The rand package in Go helps generate random (or more accurately, pseudo-random) numbers.
+Пакет `rand` в Go помогает генерировать случайные (точнее, псевдослучайные) числа.
 
-To generate pseudo-random numbers, a computer requires a seed, which introduces entropy into the process. If the same seed value is used on every run, the same sequence of pseudo-random numbers will be produced. To generate a different sequence each time, the seed value must be updated.
+Для генерации псевдослучайных чисел компьютеру нужно начальное значение (seed), вносящее энтропию в процесс. Если использовать одно и то же начальное значение, генератор будет выдавать одну и ту же последовательность псевдослучайных чисел. Для получения разных последовательностей при каждом запуске необходимо менять seed.
 
-It is common to see the use of `time.Now().Unix()` as a seed because the current time changes constantly and is unpredictable from one program run to another. This makes it a good source of entropy.
+Распространённый подход — использовать `time.Now().Unix()` в качестве начального значения, поскольку текущее время постоянно меняется и непредсказуемо от запуска к запуску. Это делает его хорошим источником энтропии.
 
-### Why do we need a seed?
+### Зачем нужно начальное значение (seed)?
 
-Since pseudo-random number generators always produce the same sequence from the same seed, using something dynamic like the current time ensures a different sequence on each execution.
+Поскольку генераторы псевдослучайных чисел всегда выдают одну и ту же последовательность при одинаковом seed, использование чего-то динамического (например, текущего времени) гарантирует разные последовательности при каждом запуске.
 
-Exercise: Create a program that mimics a dice roll (a 6-face dice)
+Упражнение: Напишите программу, имитирующую бросок игральной кости (6 граней)
 
-- A dice roll always returns one number between 1 and 6
+- Результат всегда должен быть числом от 1 до 6
 
-Reference:
+Ссылка:
 [https://pkg.go.dev/math/rand](https://pkg.go.dev/math/rand)
 
 ```go
@@ -29,13 +29,13 @@ import (
 )
 
 func main () {
-    // Your code goes here
+    // Ваш код здесь
 
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
 package main

@@ -1,54 +1,54 @@
-# Exercise 41: Closing Channels
+# Упражнение 41: Закрытие каналов
 
-## Understanding Channel Closing
+## Понимание закрытия каналов
 
-Channels can be closed to signal that no more values will be sent. This is a powerful mechanism for coordinating between goroutines and signaling completion.
+Каналы можно закрывать, чтобы сигнализировать о том, что больше никаких значений отправлено не будет. Это мощный механизм координации горутин и сигнализации о завершении.
 
-## Why Close Channels?
+## Зачем закрывать каналы?
 
-- **Signal completion**: Tell receivers no more data is coming
-- **Enable range loops**: `range` over channels requires closing
-- **Resource cleanup**: Properly manage channel resources
-- **Prevent goroutine leaks**: Allow goroutines to exit cleanly
+- **Сигнал завершения**: сообщить получателям, что данных больше не будет
+- **Поддержка циклов range**: `range` по каналам требует их закрытия
+- **Очистка ресурсов**: правильное управление ресурсами канала
+- **Предотвращение утечек горутин**: позволить горутинам завершаться чисто
 
-## How to Close Channels
+## Как закрывать каналы
 
 ```go
 ch := make(chan string)
 ch <- "hello"
-close(ch)  // No more values can be sent
+close(ch)  // Больше нельзя отправлять значения
 ```
 
-## What Happens After Closing?
+## Что происходит после закрытия?
 
-1. **Sending**: Panic if you try to send to a closed channel
-2. **Receiving**: You can still receive remaining buffered values
-3. **Empty closed channel**: Returns zero value for the type
-4. **Range**: Loop exits when channel is closed and empty
+1. **Отправка**: паника при попытке отправить в закрытый канал
+2. **Получение**: можно по-прежнему получать оставшиеся буферизованные значения
+3. **Закрытый пустой канал**: возвращает нулевое значение для типа
+4. **Range**: цикл завершается, когда канал закрыт и пуст
 
-## Detecting Closed Channels
+## Обнаружение закрытых каналов
 
-Use the "comma ok" idiom:
+Используйте идиому "запятая ok":
 ```go
 value, ok := <-ch
 if !ok {
-    // Channel is closed
+    // Канал закрыт
 }
 ```
 
-## Your Task
+## Задание
 
-Work with a buffered channel that will be closed. Learn how:
-1. You can still read from a closed channel
-2. What happens when you read from a closed, empty channel
-3. The behavior difference between open and closed channels
+Работайте с буферизованным каналом, который будет закрыт. Изучите:
+1. Можно ли по-прежнему читать из закрытого канала
+2. Что происходит при чтении из закрытого пустого канала
+3. Разницу в поведении открытого и закрытого каналов
 
 ```go
-// Exercise: Channels - Closing
+// Упражнение: Каналы — закрытие
 
-// Create a string channel "c" (make it a buffered channel)
-// Add 2 different strings directly into that channel.
-// Close the channel with the close() statement and read a quote from the channel, Can you read it?
+// Создайте строковый канал "c" (сделайте его буферизованным)
+// Добавьте в этот канал 2 разные строки напрямую.
+// Закройте канал оператором close() и прочитайте значение из канала. Можно ли его прочитать?
 
 package main
 
@@ -56,19 +56,19 @@ import "fmt"
 
 
 func main () {
-	
+
 }
 ```
 
 <details>
-<summary> Solution: </summary>
+<summary> Решение: </summary>
 
 ```go
-// Exercise: Channels - Closing
+// Упражнение: Каналы — закрытие
 
-// Create a string channel "c" (make it a buffered channel)
-// Add 2 different strings directly into that channel.
-// Close the channel with the close() statement and read a quote from the channel, Can you read it?
+// Создайте строковый канал "c" (сделайте его буферизованным)
+// Добавьте в этот канал 2 разные строки напрямую.
+// Закройте канал оператором close() и прочитайте значение из канала. Можно ли его прочитать?
 
 package main
 

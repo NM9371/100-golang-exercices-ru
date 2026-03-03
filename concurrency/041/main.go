@@ -1,14 +1,13 @@
-// Exercise: Channels - Closing
+// Упражнение: Каналы — закрытие
 
-// Create a string channel "c" (make it a buffered channel)
-// Add 2 different strings directly into that channel.
-// Close the channel with the close() statement and read a quote from the channel, Can you read it?
+// Создайте строковый канал "c" (сделайте его буферизованным)
+// Добавьте в этот канал 2 разные строки напрямую.
+// Закройте канал оператором close() и прочитайте значение из канала. Можно ли его прочитать?
 
 package main
 
 import "fmt"
 
+func main() {
 
-func main () {
-	
 }
